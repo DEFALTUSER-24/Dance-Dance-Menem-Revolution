@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject   field;
     public Canvas       canvas;
     public float        delayTime;
-    public Queue<Arrow> arrows = new Queue<Arrow>();
+    public Queue<Arrow> arrows  = new Queue<Arrow>();
+    public Queue<float> seconds = new Queue<float>();
+    public float timer;
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void ShowArrow(ArrowKey key)
+    public void ShowArrow(ArrowKey key, float eventTime)
     {
         GameObject      a               = Instantiate(arrow);
         RectTransform   arrowTransform  = a.GetComponent<RectTransform>();
@@ -50,6 +52,10 @@ public class GameManager : MonoBehaviour
                 arrowTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
                 break;
         }
+
+        seconds.Enqueue(eventTime + delayTime);
+        Debug.Log(eventTime);
+        Debug.Log(eventTime + delayTime);
     }
 
     public Vector3 GetField()

@@ -7,6 +7,6 @@ public class Arrow : MonoBehaviour
     public ArrowKey ID;
     void Start()
     {
-        LeanTween.moveLocal(this.gameObject, GameManager.instance.GetField(), GameManager.instance.delayTime);
+        LeanTween.moveLocal(this.gameObject, GameManager.instance.GetField(), GameManager.instance.delayTime - 0.5f);
     }
 }

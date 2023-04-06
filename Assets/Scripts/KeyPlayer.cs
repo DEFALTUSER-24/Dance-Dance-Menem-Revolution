@@ -33,11 +33,12 @@ public class KeyPlayer : MonoBehaviour
         if (currentEvent < keyEvents.Count)
         {
             float elapsedTime = Time.time - startTime;
+            GameManager.instance.timer = elapsedTime;
             float eventTime = keyEvents[currentEvent].Key;
             if (elapsedTime >= eventTime)
             {
                 ArrowKey key = keyEvents[currentEvent].Value;
-                GameManager.instance.ShowArrow(key);
+                GameManager.instance.ShowArrow(key, eventTime);
                 //Debug.Log("Key: " + key + " pressed at: " + elapsedTime);
                 currentEvent++;
             }
