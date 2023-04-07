@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,13 +7,27 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public GameObject   arrow;
-    public GameObject   field;
-    public Canvas       canvas;
-    public float        delayTime;
-    public Queue<Arrow> arrows  = new Queue<Arrow>();
-    public Queue<float> seconds = new Queue<float>();
-    public float timer;
+    [Header("Objects")]
+    [SerializeField] private GameObject arrow;
+    [SerializeField] private GameObject field;
+    [SerializeField] private Canvas canvas;
+
+    [Header("Queues & Lists")]
+    private Queue<ArrowKey> keys = new Queue<ArrowKey>();
+    private Queue<Arrow> arrows = new Queue<Arrow>();
+    private Queue<float> seconds = new Queue<float>();
+    private List<float> eventTimes = new List<float>();
+    private List<Arrow> eventArrows = new List<Arrow>();
+
+    [Header("Currents")]
+    public Arrow currentArrow = null;
+    public float currentTimeEvent = 0;
+
+    [Header("Time Resources")]
+    public float delayTime;
+    private float _startTimer;
+    public float currentTimer;
+    private int _CurrentEvent;
 
     private void Awake()
     {
@@ -20,41 +35,50 @@ public class GameManager : MonoBehaviour
         else Destroy(this);
     }
 
-    void Start()
+    private void Start()
     {
+        _startTimer = Time.deltaTime;
 
+        for (int i = 0; i < keys.Count; i++)
+        {
+            ArrowKey key = keys.Dequeue();
+            Arrow arrowScript = Arrow.CreateArrow(arrow, canvas.transform, new Vector3(275, -117, 0), key);
+            eventArrows.Add(arrowScript);
+            arrows.Enqueue(arrowScript);
+        }
     }
 
-    public void ShowArrow(ArrowKey key, float eventTime)
+    private void Update()
     {
-        GameObject      a               = Instantiate(arrow);
-        RectTransform   arrowTransform  = a.GetComponent<RectTransform>();
-        Arrow           arrowScript     = a.GetComponent<Arrow>();
+        currentTimer = Time.time - _startTimer;
 
-        arrowTransform.SetParent(canvas.transform);
-        arrowTransform.localPosition = new Vector3(275, -117, 0);
+        if (arrows.Count == 0 && currentArrow == null) return;
 
-        arrowScript.ID = key;
-        arrows.Enqueue(arrowScript);
-
-        switch (key)
+        if (currentArrow == null)
         {
-            case ArrowKey.Up:
-                arrowTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, -90));
-                break;
-            case ArrowKey.Down:
-                arrowTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 90));
-                break;
-            case ArrowKey.Left:
-                arrowTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 0));
-                break;
-            case ArrowKey.Right:
-                arrowTransform.localRotation = Quaternion.Euler(new Vector3(0, 0, 180));
-                break;
+            currentArrow = arrows.Dequeue();
+            currentTimeEvent = seconds.Dequeue();
         }
+        else
+        {
+            if (_CurrentEvent < eventTimes.Count)
+            {
+                float e = eventTimes[_CurrentEvent];
 
-        seconds.Enqueue(eventTime + delayTime);
-        Debug.Log(eventTime + delayTime);
+                if (currentTimer >= e)
+                {
+                    eventArrows[_CurrentEvent].gameObject.SetActive(true);
+                    _CurrentEvent++;
+                }
+            }
+        }
+    }
+
+    internal void AddKeyEvent(float time, ArrowKey key)
+    {
+        eventTimes.Add(time - delayTime);
+        seconds.Enqueue(time);
+        keys.Enqueue(key);
     }
 
     public Vector3 GetField()

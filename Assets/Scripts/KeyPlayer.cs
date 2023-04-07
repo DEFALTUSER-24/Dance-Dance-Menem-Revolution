@@ -6,8 +6,6 @@ using System.IO;
 public class KeyPlayer : MonoBehaviour
 {
     private List<KeyValuePair<float, ArrowKey>> keyEvents = new List<KeyValuePair<float, ArrowKey>>();
-    private int     currentEvent = 0;
-    private float   startTime;
     public  string  fileName;
 
     void Start()
@@ -23,25 +21,12 @@ public class KeyPlayer : MonoBehaviour
             keyEvents.Add(new KeyValuePair<float, ArrowKey>(time, key));
         }
 
-        // Start the timer
-        startTime = Time.time;
-    }
-
-    void Update()
-    {
-        // Check if it's time to trigger the next key event
-        if (currentEvent < keyEvents.Count)
+        for (int i = 1; i < lines.Length; i++)
         {
-            float elapsedTime = Time.time - startTime;
-            GameManager.instance.timer = elapsedTime;
-            float eventTime = keyEvents[currentEvent].Key;
-            if (elapsedTime >= eventTime)
-            {
-                ArrowKey key = keyEvents[currentEvent].Value;
-                GameManager.instance.ShowArrow(key, eventTime);
-                Debug.Log("Key: " + key + " pressed at: " + elapsedTime);
-                currentEvent++;
-            }
+            string[] parts = lines[i].Split(';');
+            ArrowKey key = (ArrowKey)System.Enum.Parse(typeof(ArrowKey), parts[0]);
+            float time = float.Parse(parts[1]);
+            GameManager.instance.AddKeyEvent(time, key);
         }
     }
 }

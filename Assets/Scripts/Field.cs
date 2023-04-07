@@ -6,76 +6,86 @@ using UnityEngine.UI;
 public class Field : MonoBehaviour
 {
     private Image img;
-    private Arrow arrow;
     private KeyCode keyPressed;
-    private float time;
     public float errorMargin;
 
     private void Update()
     {
-        if (GameManager.instance.arrows.Count == 0 && GameManager.instance.seconds.Count == 0) return;
+        if (GameManager.instance.currentArrow == null && GameManager.instance.currentTimeEvent == 0) return;
 
-        if (!arrow) arrow = GameManager.instance.arrows.Dequeue();
-        if (time == 0) time = GameManager.instance.seconds.Dequeue();
+        float v = GameManager.instance.currentTimer - errorMargin;
+        float b = GameManager.instance.currentTimer + errorMargin;
+        DetectKeyPressed();
 
-        float v = GameManager.instance.timer - errorMargin;
-        float b = GameManager.instance.timer + errorMargin;
-
-        if (v < time && b > time)
+        if (keyPressed != 0)
         {
-            Debug.Log("Ya!");
-            switch (arrow.ID)
+            if (v < GameManager.instance.currentTimeEvent && b > GameManager.instance.currentTimeEvent)
             {
-                case ArrowKey.Up:
-                    if (keyPressed == KeyCode.UpArrow)
-                    {
-                        Debug.Log("Cool");
-                    }
-                    else Reset();
-                    break;
-                case ArrowKey.Down:
-                    if (keyPressed == KeyCode.UpArrow)
-                    {
-                        Debug.Log("Cool");
-                    }
-                    else Reset();
-                    break;
-                case ArrowKey.Left:
-                    if (keyPressed == KeyCode.UpArrow)
-                    {
-                        Debug.Log("Cool");
+                switch (GameManager.instance.currentArrow.ID)
+                {
+                    case ArrowKey.Up:
+                        if (keyPressed == KeyCode.UpArrow)
+                        {
+                            GoodResult();
+                        }
+                        else BadResult();
+                        break;
+                    case ArrowKey.Down:
+                        if (keyPressed == KeyCode.DownArrow)
+                        {
+                            GoodResult();
+                        }
+                        else BadResult();
+                        break;
+                    case ArrowKey.Left:
+                        if (keyPressed == KeyCode.LeftArrow)
+                        {
+                            GoodResult();
 
-                    }
-                    else Reset();
-                    break;
-                case ArrowKey.Right:
-                    if (keyPressed == KeyCode.UpArrow)
-                    {
-                        Debug.Log("Cool");
-                    }
-                    else Reset();
-                    break;
+                        }
+                        else BadResult();
+                        break;
+                    case ArrowKey.Right:
+                        if (keyPressed == KeyCode.RightArrow)
+                        {
+                            GoodResult();
+                        }
+                        else BadResult();
+                        break;
+                }
             }
-
+            else BadResult();
+        }
+        else if (b > (GameManager.instance.currentTimeEvent + errorMargin) * 1.1f && keyPressed == 0)
+        {
+            BadResult();
+            Debug.Log(GameManager.instance.currentArrow.ID);
         }
     }
 
     public void DetectKeyPressed()
     {
+        keyPressed = KeyCode.None;
+
         foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
         {
-            if (Input.GetKeyDown(kcode))
-            {
-                keyPressed = kcode;
-            }
+            if (Input.GetKeyDown(kcode)) keyPressed = kcode;
         }
     }
 
-    private void Reset()
+    private void GoodResult()
     {
-        Destroy(arrow.gameObject);
-        time = 0;
-        arrow = null;
-        Debug.Log("Mal" + GameManager.instance.timer);
+        Destroy(GameManager.instance.currentArrow.gameObject);
+        GameManager.instance.currentTimeEvent = 0;
+        GameManager.instance.currentArrow = null;
+        Debug.Log("Cool");
+    }
+
+    private void BadResult()
+    {
+        Destroy(GameManager.instance.currentArrow.gameObject);
+        GameManager.instance.currentTimeEvent = 0;
+        GameManager.instance.currentArrow = null;
+        Debug.Log("Mal");
     }
 }
