@@ -78,7 +78,7 @@ public class Field : MonoBehaviour
         Destroy(GameManager.instance.currentArrow.gameObject);
         GameManager.instance.currentTimeEvent = 0;
         GameManager.instance.currentArrow = null;
-        Debug.Log("Cool");
+        Debug.Log("Cool" + GameManager.instance.currentTimer);
     }
 
     private void BadResult()

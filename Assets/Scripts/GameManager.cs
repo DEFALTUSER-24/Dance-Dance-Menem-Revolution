@@ -76,13 +76,13 @@ public class GameManager : MonoBehaviour
 
     internal void AddKeyEvent(float time, ArrowKey key)
     {
-        eventTimes.Add(time - delayTime);
+        eventTimes.Add(time - (delayTime / 2));
         seconds.Enqueue(time);
         keys.Enqueue(key);
     }
 
     public Vector3 GetField()
     {
-        return field.GetComponent<RectTransform>().localPosition;
+        return new Vector3(-277, -117, 0);
     }
 }
