@@ -11,7 +11,7 @@ public class KeyPlayer : MonoBehaviour
     void Start()
     {
         // Read the key events from the CSV file
-        string filePath = @"C:\Users\Usuario\Documents\" + fileName + ".csv"; ;
+        string filePath = Path.Combine(Application.dataPath, fileName + ".csv");
         string[] lines = File.ReadAllLines(filePath);
         for (int i = 1; i < lines.Length; i++)
         {

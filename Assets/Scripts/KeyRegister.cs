@@ -11,7 +11,7 @@ public class KeyRegister : MonoBehaviour
 
     void Start()
     {
-        filePath = @"C:\Users\Usuario\Documents\" + fileName + ".csv";
+        filePath = Path.Combine(Application.dataPath, fileName + ".csv");
         // Create the file if it doesn't exist
         
         if (!File.Exists(filePath))
