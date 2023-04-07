@@ -9,15 +9,21 @@ public class Field : MonoBehaviour
     private Arrow arrow;
     private KeyCode keyPressed;
     private float time;
-    public float error;
+    public float errorMargin;
 
     private void Update()
     {
-        if (!arrow && GameManager.instance.arrows.Count > 0) arrow = GameManager.instance.arrows.Dequeue();
-        if (time == 0 && GameManager.instance.seconds.Count > 0) time = GameManager.instance.seconds.Dequeue();
+        if (GameManager.instance.arrows.Count == 0 && GameManager.instance.seconds.Count == 0) return;
 
-        if (time> GameManager.instance.timer - error && time < GameManager.instance.timer + error)
+        if (!arrow) arrow = GameManager.instance.arrows.Dequeue();
+        if (time == 0) time = GameManager.instance.seconds.Dequeue();
+
+        float v = GameManager.instance.timer - errorMargin;
+        float b = GameManager.instance.timer + errorMargin;
+
+        if (v < time && b > time)
         {
+            Debug.Log("Ya!");
             switch (arrow.ID)
             {
                 case ArrowKey.Up:
@@ -25,47 +31,29 @@ public class Field : MonoBehaviour
                     {
                         Debug.Log("Cool");
                     }
-                    else
-                    {
-                        Destroy(arrow);
-                        Debug.Log("Mal" + GameManager.instance.timer);
-                    }
+                    else Reset();
                     break;
                 case ArrowKey.Down:
                     if (keyPressed == KeyCode.UpArrow)
                     {
-                            Debug.Log("Cool");
-
+                        Debug.Log("Cool");
                     }
-                    else
-                    {
-                        Destroy(arrow);
-                        Debug.Log("Mal" + GameManager.instance.timer);
-                    }
+                    else Reset();
                     break;
                 case ArrowKey.Left:
                     if (keyPressed == KeyCode.UpArrow)
                     {
-                            Debug.Log("Cool");
+                        Debug.Log("Cool");
 
                     }
-                    else
-                    {
-                        Destroy(arrow);
-                        Debug.Log("Mal" + GameManager.instance.timer);
-                    }
+                    else Reset();
                     break;
                 case ArrowKey.Right:
                     if (keyPressed == KeyCode.UpArrow)
                     {
-                            Debug.Log("Cool");
-
+                        Debug.Log("Cool");
                     }
-                    else
-                    {
-                        Destroy(arrow);
-                        Debug.Log("Mal" + GameManager.instance.timer);
-                    }
+                    else Reset();
                     break;
             }
 
@@ -81,5 +69,13 @@ public class Field : MonoBehaviour
                 keyPressed = kcode;
             }
         }
+    }
+
+    private void Reset()
+    {
+        Destroy(arrow.gameObject);
+        time = 0;
+        arrow = null;
+        Debug.Log("Mal" + GameManager.instance.timer);
     }
 }

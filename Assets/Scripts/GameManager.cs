@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
         }
 
         seconds.Enqueue(eventTime + delayTime);
-        Debug.Log(eventTime);
         Debug.Log(eventTime + delayTime);
     }
 

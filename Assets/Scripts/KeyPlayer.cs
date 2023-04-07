@@ -39,7 +39,7 @@ public class KeyPlayer : MonoBehaviour
             {
                 ArrowKey key = keyEvents[currentEvent].Value;
                 GameManager.instance.ShowArrow(key, eventTime);
-                //Debug.Log("Key: " + key + " pressed at: " + elapsedTime);
+                Debug.Log("Key: " + key + " pressed at: " + elapsedTime);
                 currentEvent++;
             }
         }
