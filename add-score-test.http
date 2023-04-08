@@ -1,0 +1,7 @@
+// @no-log
+POST https://defaltuser.000webhostapp.com/menem/?action=add-score
+Content-Type: application/x-www-form-urlencoded
+
+name=asd&score=123
+
+###

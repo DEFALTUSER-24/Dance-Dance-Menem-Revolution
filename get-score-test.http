@@ -1,0 +1,4 @@
+GET https://defaltuser.000webhostapp.com/menem/?action=get-scores
+Accept: application/json
+
+###
