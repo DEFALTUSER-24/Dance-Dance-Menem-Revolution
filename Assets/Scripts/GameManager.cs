@@ -51,11 +51,11 @@ public class GameManager : MonoBehaviour
             eventArrows.Add(arrowScript);
             arrows.Enqueue(arrowScript);
         }
-        Debug.Log(seconds.Count);
+        /*Debug.Log(seconds.Count);
         Debug.Log(arrows.Count);
         Debug.Log(keys.Count);
         Debug.Log(eventTimes.Count);
-        Debug.Log(eventArrows.Count);
+        Debug.Log(eventArrows.Count);*/
     }
 
     private void Update()

@@ -12,6 +12,9 @@ public class Field : MonoBehaviour
     private HashSet<KeyCode> validKeyCodes;
     private Dictionary<ArrowKey, KeyCode> arrowKeyToKeyCodeMap;
 
+    private const float excellentThreshold = 0.1f;
+    private const float veryGoodThreshold = 0.5f;
+
     private void Start()
     {
         validKeyCodes = new HashSet<KeyCode> { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow };
@@ -71,32 +74,21 @@ public class Field : MonoBehaviour
             return;
         }
 
-        KeypressPrecision result = KeypressPrecision.Good;
-
-        float diff = Mathf.Round((GameManager.instance.currentTimer - GameManager.instance.currentTimeEvent) * 100f) / 100f;
-        diff = diff < 0 ? diff * -1 : diff;
+        float diff = Math.Abs(Mathf.Round((GameManager.instance.currentTimer - GameManager.instance.currentTimeEvent) * 100f) / 100f);
 
         switch (diff)
         {
-            case float d when d <= 0.1f && d > 0:
-                result = KeypressPrecision.Excellent;
+            case float d when d <= excellentThreshold:
+                GameManager.instance.Score().Update(KeypressPrecision.Excellent);
+                break;
+            case float d when d <= veryGoodThreshold:
+                GameManager.instance.Score().Update(KeypressPrecision.VeryGood);
+                break;
+            default:
+                GameManager.instance.Score().Update(KeypressPrecision.Good);
                 break;
         }
 
-        if (diff <= 0.1f && diff > 0)
-        {
-            result = KeypressPrecision.Excellent;
-        }
-        else if (diff <= 0.5f && diff > 0.1f)
-        {
-            result = KeypressPrecision.VeryGood;
-        }
-        else if (diff > 0.5f)
-        {
-            result = KeypressPrecision.Good;
-        }
-
         GameManager.instance.DestroyCurrentKey();
-        GameManager.instance.Score().Update(result);
     }
 }
