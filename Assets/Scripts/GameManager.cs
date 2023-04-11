@@ -46,6 +46,11 @@ public class GameManager : MonoBehaviour
             eventArrows.Add(arrowScript);
             arrows.Enqueue(arrowScript);
         }
+        Debug.Log(seconds.Count);
+        Debug.Log(arrows.Count);
+        Debug.Log(keys.Count);
+        Debug.Log(eventTimes.Count);
+        Debug.Log(eventArrows.Count);
     }
 
     private void Update()
@@ -83,6 +88,6 @@ public class GameManager : MonoBehaviour
 
     public Vector3 GetField()
     {
-        return new Vector3(-277, -117, 0);
+        return new Vector3(-275, -117, 0);
     }
 }
