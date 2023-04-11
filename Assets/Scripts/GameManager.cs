@@ -29,6 +29,10 @@ public class GameManager : MonoBehaviour
     public float currentTimer;
     private int _CurrentEvent;
 
+    [Header("Game Score")]
+    private GameScore score;
+    [SerializeField] private int currentLevel;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -38,6 +42,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _startTimer = Time.deltaTime;
+        score = new GameScore();
 
         for (int i = 0; i < keys.Count; i++)
         {
@@ -70,7 +75,7 @@ public class GameManager : MonoBehaviour
             {
                 float e = eventTimes[_CurrentEvent];
 
-                if (currentTimer >= e)
+                if (currentTimer >= e && _CurrentEvent < eventArrows.Count)
                 {
                     eventArrows[_CurrentEvent].gameObject.SetActive(true);
                     _CurrentEvent++;
@@ -89,5 +94,24 @@ public class GameManager : MonoBehaviour
     public Vector3 GetField()
     {
         return new Vector3(-275, -117, 0);
+    }
+
+    public GameScore Score()
+    {
+        return score;
+    }
+
+    public void DestroyCurrentKey()
+    {
+        if (!currentArrow.isActiveAndEnabled) return;
+
+        Destroy(currentArrow.gameObject);
+        currentTimeEvent = 0;
+        currentArrow = null;
+    }
+
+    public void UpdateScoreUI()
+    {
+        Debug.Log(score.Get());
     }
 }

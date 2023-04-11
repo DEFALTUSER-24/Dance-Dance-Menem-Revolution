@@ -4,3 +4,11 @@ public enum ArrowKey {
     Left, 
     Right 
 }
+
+public enum KeypressPrecision
+{
+    Excellent,
+    VeryGood,
+    Good,
+    Bad
+}

@@ -17,75 +17,80 @@ public class Field : MonoBehaviour
         float b = GameManager.instance.currentTimer + errorMargin;
         DetectKeyPressed();
 
-        if (keyPressed != 0)
+        if (keyPressed != KeyCode.None)
         {
             if (v < GameManager.instance.currentTimeEvent && b > GameManager.instance.currentTimeEvent)
             {
                 switch (GameManager.instance.currentArrow.ID)
                 {
                     case ArrowKey.Up:
-                        if (keyPressed == KeyCode.UpArrow)
-                        {
-                            GoodResult();
-                        }
-                        else BadResult();
+                        KeypressResult(keyPressed == KeyCode.UpArrow);
                         break;
                     case ArrowKey.Down:
-                        if (keyPressed == KeyCode.DownArrow)
-                        {
-                            GoodResult();
-                        }
-                        else BadResult();
+                        KeypressResult(keyPressed == KeyCode.DownArrow);
                         break;
                     case ArrowKey.Left:
-                        if (keyPressed == KeyCode.LeftArrow)
-                        {
-                            GoodResult();
-
-                        }
-                        else BadResult();
+                        KeypressResult(keyPressed == KeyCode.LeftArrow);
                         break;
                     case ArrowKey.Right:
-                        if (keyPressed == KeyCode.RightArrow)
-                        {
-                            GoodResult();
-                        }
-                        else BadResult();
+                        KeypressResult(keyPressed == KeyCode.RightArrow);
                         break;
                 }
             }
-            else BadResult();
+            else KeypressResult(false);
         }
-        else if (b > (GameManager.instance.currentTimeEvent + errorMargin) * 1.1f && keyPressed == 0)
+        else if (b > (GameManager.instance.currentTimeEvent + errorMargin) * 1.1f && keyPressed == KeyCode.None)
         {
-            BadResult();
-            Debug.Log(GameManager.instance.currentArrow.ID);
+            KeypressResult(false);
         }
     }
 
-    public void DetectKeyPressed()
+    private void DetectKeyPressed()
     {
         keyPressed = KeyCode.None;
 
         foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
         {
-            if (Input.GetKeyDown(kcode)) keyPressed = kcode;
+            if (Input.GetKeyDown(kcode))
+            {
+                if (kcode == KeyCode.DownArrow || kcode == KeyCode.UpArrow ||
+                    kcode == KeyCode.LeftArrow || kcode == KeyCode.RightArrow)
+                {
+                    keyPressed = kcode;
+                    break;
+                }
+            }
         }
     }
 
-    private void GoodResult()
+    private void KeypressResult(bool wasGood)
     {
-        Destroy(GameManager.instance.currentArrow.gameObject);
-        GameManager.instance.currentTimeEvent = 0;
-        GameManager.instance.currentArrow = null;
-        Debug.Log("Cool" + GameManager.instance.currentTimer);
-    }
+        if (!wasGood)
+        {
+            GameManager.instance.DestroyCurrentKey();
+            GameManager.instance.Score().Update(KeypressPrecision.Bad);
+            return;
+        }
 
-    private void BadResult()
-    {
-        Destroy(GameManager.instance.currentArrow.gameObject);
-        GameManager.instance.currentTimeEvent = 0;
-        GameManager.instance.currentArrow = null;
-        Debug.Log("Mal");
+        KeypressPrecision result = KeypressPrecision.Good;
+
+        float diff = Mathf.Round((GameManager.instance.currentTimer - GameManager.instance.currentTimeEvent) * 100f) / 100f;
+        diff = diff < 0 ? diff * -1 : diff;
+
+        if (diff <= 0.1f && diff > 0)
+        {
+            result = KeypressPrecision.Excellent;
+        }
+        else if (diff <= 0.5f && diff > 0.1f)
+        {
+            result = KeypressPrecision.VeryGood;
+        }
+        else if (diff > 0.5f)
+        {
+            result = KeypressPrecision.Good;
+        }
+
+        GameManager.instance.DestroyCurrentKey();
+        GameManager.instance.Score().Update(result);
     }
 }

@@ -1,16 +1,36 @@
 public class GameScore
 {
     int _currentScore = 0;
-    public int Add(int scoreToAdd)
+    public void Update(KeypressPrecision result)
     {
-        _currentScore += scoreToAdd;
-        return _currentScore;
+        switch (result)
+        {
+            case KeypressPrecision.Excellent:
+                _currentScore += 1000;
+                break;
+            case KeypressPrecision.VeryGood:
+                _currentScore += 080;
+                break;
+            case KeypressPrecision.Good:
+                _currentScore += 400;
+                break;
+            case KeypressPrecision.Bad:
+                _currentScore -= 200;
+                break;
+        }
+
+        OnUpdate();
     }
 
-    public void Save(string playerName)
+    private void OnUpdate()
+    {
+        GameManager.instance.UpdateScoreUI();
+    }
+
+    public void Save(string playerName, int gameLevel)
     {
         ServerData SD = new ServerData();
-        SD.SaveScore(_currentScore, playerName);
+        SD.SaveScore(_currentScore, playerName, gameLevel);
     }
 
     public int Get()

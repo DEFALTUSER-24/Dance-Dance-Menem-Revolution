@@ -36,19 +36,18 @@ public class ServerData : MonoBehaviour
 
     #region Save score data
 
-    public void SaveScore(int playerScore, string playerName)
+    public void SaveScore(int playerScore, string playerName, int gameLevel)
     {
-        StartCoroutine(SaveScore_Coroutine(playerScore, playerName));
+        StartCoroutine(SaveScore_Coroutine(playerScore, playerName, gameLevel));
     }
 
-    IEnumerator SaveScore_Coroutine(int playerScore, string playerName)
+    IEnumerator SaveScore_Coroutine(int playerScore, string playerName, int gameLevel)
     {
         string url = "https://defaltuser.000webhostapp.com/menem/?action=add-score";
         WWWForm form = new WWWForm();
-        //form.AddField("name", "test name");
         form.AddField("name", playerName);
-        //form.AddField("score", Random.Range(10000, 100000));
         form.AddField("score", playerScore);
+        form.AddField("level", gameLevel);
 
         using (UnityWebRequest request = UnityWebRequest.Post(url, form))
         {
