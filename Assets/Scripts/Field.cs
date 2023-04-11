@@ -5,9 +5,23 @@ using UnityEngine.UI;
 
 public class Field : MonoBehaviour
 {
-    private Image img;
+    //private Image img;
     private KeyCode keyPressed;
     public float errorMargin;
+
+    private HashSet<KeyCode> validKeyCodes;
+    private Dictionary<ArrowKey, KeyCode> arrowKeyToKeyCodeMap;
+
+    private void Start()
+    {
+        validKeyCodes = new HashSet<KeyCode> { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow };
+        arrowKeyToKeyCodeMap = new Dictionary<ArrowKey, KeyCode> {
+        { ArrowKey.Up, KeyCode.UpArrow },
+        { ArrowKey.Down, KeyCode.DownArrow },
+        { ArrowKey.Left, KeyCode.LeftArrow },
+        { ArrowKey.Right, KeyCode.RightArrow }
+    };
+    }
 
     private void Update()
     {
@@ -21,23 +35,12 @@ public class Field : MonoBehaviour
         {
             if (v < GameManager.instance.currentTimeEvent && b > GameManager.instance.currentTimeEvent)
             {
-                switch (GameManager.instance.currentArrow.ID)
-                {
-                    case ArrowKey.Up:
-                        KeypressResult(keyPressed == KeyCode.UpArrow);
-                        break;
-                    case ArrowKey.Down:
-                        KeypressResult(keyPressed == KeyCode.DownArrow);
-                        break;
-                    case ArrowKey.Left:
-                        KeypressResult(keyPressed == KeyCode.LeftArrow);
-                        break;
-                    case ArrowKey.Right:
-                        KeypressResult(keyPressed == KeyCode.RightArrow);
-                        break;
-                }
+                KeypressResult(keyPressed == arrowKeyToKeyCodeMap[GameManager.instance.currentArrow.ID]);
             }
-            else KeypressResult(false);
+            else
+            {
+                KeypressResult(false);
+            }
         }
         else if (b > (GameManager.instance.currentTimeEvent + errorMargin) * 1.1f && keyPressed == KeyCode.None)
         {
@@ -49,16 +52,12 @@ public class Field : MonoBehaviour
     {
         keyPressed = KeyCode.None;
 
-        foreach (KeyCode kcode in Enum.GetValues(typeof(KeyCode)))
+        foreach (KeyCode kcode in validKeyCodes)
         {
             if (Input.GetKeyDown(kcode))
             {
-                if (kcode == KeyCode.DownArrow || kcode == KeyCode.UpArrow ||
-                    kcode == KeyCode.LeftArrow || kcode == KeyCode.RightArrow)
-                {
-                    keyPressed = kcode;
-                    break;
-                }
+                keyPressed = kcode;
+                break;
             }
         }
     }
@@ -76,6 +75,13 @@ public class Field : MonoBehaviour
 
         float diff = Mathf.Round((GameManager.instance.currentTimer - GameManager.instance.currentTimeEvent) * 100f) / 100f;
         diff = diff < 0 ? diff * -1 : diff;
+
+        switch (diff)
+        {
+            case float d when d <= 0.1f && d > 0:
+                result = KeypressPrecision.Excellent;
+                break;
+        }
 
         if (diff <= 0.1f && diff > 0)
         {

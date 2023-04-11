@@ -9,7 +9,7 @@ public class GameScore
                 _currentScore += 1000;
                 break;
             case KeypressPrecision.VeryGood:
-                _currentScore += 080;
+                _currentScore += 800;
                 break;
             case KeypressPrecision.Good:
                 _currentScore += 400;
