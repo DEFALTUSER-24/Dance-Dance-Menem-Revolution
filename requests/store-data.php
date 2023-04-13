@@ -14,7 +14,7 @@
     $level = intval(database::Escape($_POST["level"]));
 
     //Send changes to database
-    database::Query("INSERT INTO users_score (name, user_score, level) VALUES ('" . $username . "', " . $score . " " . $level . ")");
+    database::Query("INSERT INTO users_score (name, user_score, level) VALUES ('" . $username . "', " . $score . ", " . $level . ")");
 
     //If no changes were made, end with error.
     if (!database::WasAffected()) {
