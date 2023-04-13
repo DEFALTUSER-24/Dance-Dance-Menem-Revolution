@@ -22,6 +22,24 @@
         }
 
         /**
+         * End request with data only (no "success").
+         *
+         * @param array $data
+         * @return void
+         */
+        public static function EndWithData(array $data = array())
+        {
+            database::CloseConnection();
+
+            $jsonData = array();
+            $jsonData['data'] = $data;
+
+            header('Content-type: application/json; charset=utf-8');
+            echo json_encode($jsonData, JSON_UNESCAPED_UNICODE); //JSON_FORCE_OBJECT
+            exit;
+        }
+
+        /**
          * End Request with a specified error
          *
          * @param string $error_description

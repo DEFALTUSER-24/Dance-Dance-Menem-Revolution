@@ -17,4 +17,4 @@
     }
 
     //End request with obtained data.
-    request::End(true, $query_data);
+    request::EndWithData($query_data);
