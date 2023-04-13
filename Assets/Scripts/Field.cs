@@ -19,11 +19,11 @@ public class Field : MonoBehaviour
     {
         validKeyCodes = new HashSet<KeyCode> { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow };
         arrowKeyToKeyCodeMap = new Dictionary<ArrowKey, KeyCode> {
-        { ArrowKey.Up, KeyCode.UpArrow },
-        { ArrowKey.Down, KeyCode.DownArrow },
-        { ArrowKey.Left, KeyCode.LeftArrow },
-        { ArrowKey.Right, KeyCode.RightArrow }
-    };
+            { ArrowKey.Up, KeyCode.UpArrow },
+            { ArrowKey.Down, KeyCode.DownArrow },
+            { ArrowKey.Left, KeyCode.LeftArrow },
+            { ArrowKey.Right, KeyCode.RightArrow }
+        };
     }
 
     private void Update()

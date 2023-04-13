@@ -44,13 +44,6 @@ public class GameManager : MonoBehaviour
         _startTimer = Time.deltaTime;
         score = new GameScore();
 
-        for (int i = 0; i < keys.Count; i++)
-        {
-            ArrowKey key = keys.Dequeue();
-            Arrow arrowScript = Arrow.CreateArrow(arrow, canvas.transform, new Vector3(275, -117, 0), key);
-            eventArrows.Add(arrowScript);
-            arrows.Enqueue(arrowScript);
-        }
         /*Debug.Log(seconds.Count);
         Debug.Log(arrows.Count);
         Debug.Log(keys.Count);
@@ -89,6 +82,17 @@ public class GameManager : MonoBehaviour
         eventTimes.Add(time - (delayTime / 2));
         seconds.Enqueue(time);
         keys.Enqueue(key);
+    }
+
+    public void CreateKeys()
+    {
+        for (int i = 0; i < keys.Count; i++)
+        {
+            ArrowKey key = keys.Peek();
+            Arrow arrowScript = Arrow.CreateArrow(arrow, canvas.transform, new Vector3(275, -117, 0), key);
+            eventArrows.Add(arrowScript);
+            arrows.Enqueue(arrowScript);
+        }
     }
 
     public Vector3 GetField()
