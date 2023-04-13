@@ -113,9 +113,4 @@ public class GameManager : MonoBehaviour
         currentTimeEvent = 0;
         currentArrow = null;
     }
-
-    public void UpdateScoreUI()
-    {
-        Debug.Log(score.Get());
-    }
 }

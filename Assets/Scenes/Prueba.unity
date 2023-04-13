@@ -230,7 +230,7 @@ GameObject:
   - component: {fileID: 406736751}
   - component: {fileID: 406736750}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7462f9f39ed34f94e8e67553bc2b29f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Prueba
+  fileName: prueba-2
 --- !u!114 &406736752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f888ec63d1c702a438522c31f4d03a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: Prueba
+  fileName: prueba-2
 --- !u!4 &406736753
 Transform:
   m_ObjectHideFlags: 0

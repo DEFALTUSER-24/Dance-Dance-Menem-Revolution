@@ -24,13 +24,13 @@ public class GameScore
 
     private void OnUpdate()
     {
-        GameManager.instance.UpdateScoreUI();
+        UI.instance.UpdateGameScore();
     }
 
     public void Save(string playerName, int gameLevel)
     {
-        ServerData SD = new ServerData();
-        SD.SaveScore(_currentScore, playerName, gameLevel);
+        //ServerData SD = new ServerData();
+        //SD.SaveScore(_currentScore, playerName, gameLevel);
     }
 
     public int Get()
