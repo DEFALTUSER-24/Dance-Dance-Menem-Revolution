@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < keys.Count; i++)
         {
             ArrowKey key = keys.Peek();
-            Arrow arrowScript = Arrow.CreateArrow(arrow, canvas.transform, new Vector3(275, -117, 0), key);
+            Arrow arrowScript = Arrow.CreateArrow(arrow, canvas.transform, new Vector3(450, -150, 0), key);
             eventArrows.Add(arrowScript);
             arrows.Enqueue(arrowScript);
         }
@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     public Vector3 GetField()
     {
-        return new Vector3(-450, -250, 0);
+        return new Vector3(-450, -150, 0);
     }
 
     public GameScore Score()
