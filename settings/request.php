@@ -90,7 +90,7 @@
         {
             $args = func_get_args();
             foreach ($args as $key) {
-                if (!array_key_exists($key, $_POST) || empty($_POST[$key])) {
+                if (!array_key_exists($key, $_POST)) {
                     return false;
                 }
             }
