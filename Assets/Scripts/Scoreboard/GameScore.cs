@@ -27,10 +27,10 @@ public class GameScore
         UI.instance.UpdateGameScore();
     }
 
-    public void Save(string playerName, int gameLevel)
+    //public void Save(string playerName, int gameLevel)
+    public void Save(string playerName)
     {
-        //ServerData SD = new ServerData();
-        //SD.SaveScore(_currentScore, playerName, gameLevel);
+        ServerRequest.instance.SaveScore(GameManager.instance.Score().Get(), playerName);
     }
 
     public int Get()

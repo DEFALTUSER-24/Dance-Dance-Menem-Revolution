@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Game Score")]
     private GameScore score;
-    [SerializeField] private int currentLevel;
+    //[SerializeField] private int currentLevel;
 
     private void Awake()
     {
@@ -43,12 +43,6 @@ public class GameManager : MonoBehaviour
     {
         _startTimer = Time.deltaTime;
         score = new GameScore();
-
-        /*Debug.Log(seconds.Count);
-        Debug.Log(arrows.Count);
-        Debug.Log(keys.Count);
-        Debug.Log(eventTimes.Count);
-        Debug.Log(eventArrows.Count);*/
     }
 
     private void Update()

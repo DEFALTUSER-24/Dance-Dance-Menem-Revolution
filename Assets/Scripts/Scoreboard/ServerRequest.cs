@@ -5,6 +5,14 @@ using UnityEngine.Networking;
 
 public class ServerRequest : MonoBehaviour
 {
+    public static ServerRequest instance;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(this);
+    }
+
     #region Get score data
 
     public void GetScores()
@@ -34,8 +42,10 @@ public class ServerRequest : MonoBehaviour
 
     #region Save score data
 
-    public void SaveScore(int playerScore, string playerName, int gameLevel)
+    //public void SaveScore(int playerScore, string playerName, int gameLevel)
+    public void SaveScore(int playerScore, string playerName)
     {
+        int gameLevel = 1; //Cambiar esto cuando se agreguen mas niveles
         StartCoroutine(SaveScore_Coroutine(playerScore, playerName, gameLevel));
     }
 
@@ -52,7 +62,7 @@ public class ServerRequest : MonoBehaviour
             yield return request.SendWebRequest();
             if (request.result == UnityWebRequest.Result.Success)
             {
-                UI.instance.UpdateScoreboard(request.downloadHandler.text);
+                UI.instance.OnScoreSaved();
             }
             else
             {

@@ -43,11 +43,6 @@ public class UI : MonoBehaviour
             case UIInitialPanel.Scoreboard:
                 ShowScoreboardMenu();
                 break;
-
-            default:
-                ShowInGameMenu();
-                break;
-
         }
     }
 
@@ -113,5 +108,22 @@ public class UI : MonoBehaviour
 
         inGamePanel.SetActive(false);
         gameOverPanel.SetActive(false);
+    }
+
+    public void SaveScore()
+    {
+        if (scoreUploadInput.text == "")
+        {
+            ShowScoreUploadError("Tenés que escribir un nombre, máximo 24 letras.");
+            return;
+        }
+
+        GameManager.instance.Score().Save(scoreUploadInput.text);
+    }
+
+    public void OnScoreSaved()
+    {
+        ShowScoreUploadError("Puntaje guardado correctamente.");
+        //scoreUploadInput.gameObject.SetActive(false);
     }
 }
