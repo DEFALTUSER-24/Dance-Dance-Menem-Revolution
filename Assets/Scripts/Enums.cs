@@ -12,3 +12,10 @@ public enum KeypressPrecision
     Good,
     Bad
 }
+
+public enum UIInitialPanel
+{
+    InGame,
+    Scoreboard,
+    GameOver
+}

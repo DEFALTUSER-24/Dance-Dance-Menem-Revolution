@@ -8,8 +8,21 @@ public class UI : MonoBehaviour
 {
     public static UI instance;
 
+    [Header("Select an initial menu")]
+    [SerializeField] private UIInitialPanel initialPanel;
+
+    [Header("In-game")]
+    [SerializeField] private GameObject inGamePanel;
+    [SerializeField] private TMP_Text gameScore;
+
+    [Header("Scoreboard")]
+    [SerializeField] private GameObject scoreboardPanel;
     [SerializeField] private TMP_InputField scoreboard;
-    [SerializeField] private Text gameScore;
+
+    [Header("Game Over")]
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private TMP_InputField scoreUploadInput;
+    [SerializeField] private TMP_Text serverErrorText;
 
     private void Awake()
     {
@@ -17,18 +30,45 @@ public class UI : MonoBehaviour
         else Destroy(this);
     }
 
+    private void Start()
+    {
+        switch (initialPanel)
+        {
+            case UIInitialPanel.GameOver:
+                ShowGameOverMenu();
+                break;
+            case UIInitialPanel.InGame:
+                ShowInGameMenu();
+                break;
+            case UIInitialPanel.Scoreboard:
+                ShowScoreboardMenu();
+                break;
+
+            default:
+                ShowInGameMenu();
+                break;
+
+        }
+    }
+
     public void UpdateGameScore()
     {
-        Debug.Log(GameManager.instance.Score().Get());
+        gameScore.text = "Puntaje: " + GameManager.instance.Score().Get();
     }
 
     public void UpdateScoreboard(string json_data)
     {
+        if (json_data == "")
+        {
+            ShowScoreboardError();
+            return;
+        }
+
         ServerScoreboardData[] json = JsonHelper.FromJson<ServerScoreboardData>(json_data);
 
         if (json.Length == 0 || json == null)
         {
-            scoreboard.text = "Error al obtener los datos del servidor";
+            ShowScoreboardError();
             return;
         }
 
@@ -41,8 +81,37 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void ShowScoreboardServerError()
+    public void ShowScoreboardError()
     {
+        scoreboard.text = "Error al obtener los datos del servidor";
+    }
 
+    public void ShowScoreUploadError(string errorDescription = "")
+    {
+        serverErrorText.text = errorDescription != "" ? errorDescription : "Error al subir el puntaje al servidor";
+    }
+
+    public void ShowGameOverMenu()
+    {
+        gameOverPanel.SetActive(true);
+
+        inGamePanel.SetActive(false);
+        //scoreboardPanel.SetActive(false);
+    }
+    
+    public void ShowInGameMenu()
+    {
+        inGamePanel.SetActive(true);
+
+        //scoreboardPanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+    }
+
+    public void ShowScoreboardMenu()
+    {
+        //scoreboardPanel.SetActive(true);
+
+        inGamePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
     }
 }

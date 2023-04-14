@@ -25,7 +25,7 @@ public class ServerRequest : MonoBehaviour
             }
             else
             {
-                UI.instance.ShowScoreboardServerError();
+                UI.instance.ShowScoreboardError();
             }
         }
     }
@@ -34,25 +34,18 @@ public class ServerRequest : MonoBehaviour
 
     #region Save score data
 
-    //public void SaveScore(int playerScore, string playerName, int gameLevel)
-    public void SaveScore()
+    public void SaveScore(int playerScore, string playerName, int gameLevel)
     {
-        //StartCoroutine(SaveScore_Coroutine(playerScore, playerName, gameLevel));
-        StartCoroutine(SaveScore_Coroutine());
+        StartCoroutine(SaveScore_Coroutine(playerScore, playerName, gameLevel));
     }
 
-    //IEnumerator SaveScore_Coroutine(int playerScore, string playerName, int gameLevel)
-    IEnumerator SaveScore_Coroutine()
+    IEnumerator SaveScore_Coroutine(int playerScore, string playerName, int gameLevel)
     {
         string url = "https://defaltuser.000webhostapp.com/menem/?action=add-score";
         WWWForm form = new WWWForm();
-        //form.AddField("name", playerName);
-        //form.AddField("score", playerScore);
-        //form.AddField("level", gameLevel);
-
-        form.AddField("name", "asd");
-        form.AddField("score", Random.Range(100000, 10000000));
-        form.AddField("level", 1);
+        form.AddField("name", playerName);
+        form.AddField("score", playerScore);
+        form.AddField("level", gameLevel);
 
         using (UnityWebRequest request = UnityWebRequest.Post(url, form))
         {
@@ -63,7 +56,7 @@ public class ServerRequest : MonoBehaviour
             }
             else
             {
-                UI.instance.ShowScoreboardServerError();
+                UI.instance.ShowScoreUploadError();
             }
         }
     }
