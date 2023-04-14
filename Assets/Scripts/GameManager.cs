@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
     [Header("Objects")]
     [SerializeField] private GameObject arrow;
-    [SerializeField] private GameObject field;
     [SerializeField] private Canvas canvas;
 
     [Header("Queues & Lists")]
