@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class GameScore
 {
     int _currentScore = 0;
@@ -18,6 +20,8 @@ public class GameScore
                 _currentScore -= 200;
                 break;
         }
+
+        Mathf.Clamp(_currentScore, 0, Mathf.Infinity);
 
         OnUpdate();
     }

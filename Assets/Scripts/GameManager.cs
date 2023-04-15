@@ -39,12 +39,13 @@ public class GameManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(this);
+        score = new GameScore();
+        score.Reset();
     }
 
     private void Start()
     {
         _startTimer = Time.deltaTime;
-        score = new GameScore();
     }
 
     private void Update()
@@ -82,9 +83,11 @@ public class GameManager : MonoBehaviour
 
     public void CreateKeys()
     {
-        for (int i = 0; i < keys.Count; i++)
+        int index = keys.Count;
+
+        for (int i = 0; i < index; i++)
         {
-            ArrowKey key = keys.Peek();
+            ArrowKey key = keys.Dequeue();
             Arrow arrowScript = Arrow.CreateArrow(arrow, canvas.transform, new Vector3(450, -150, 0), key);
             eventArrows.Add(arrowScript);
             arrows.Enqueue(arrowScript);
