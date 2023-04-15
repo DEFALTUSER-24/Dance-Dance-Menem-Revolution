@@ -662,6 +662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2840f36ddaa1f464395ec2ff2a23f3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToBeginDancing: 3.5
   blendCurve: 0.8
   animationCount: 7
   transitionDuration: 0.5

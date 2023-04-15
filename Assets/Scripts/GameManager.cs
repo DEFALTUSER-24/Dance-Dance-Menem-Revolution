@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviour
 
     internal void AddKeyEvent(float time, ArrowKey key)
     {
-        eventTimes.Add(time + Time.time - (delayTime / 2));
+        eventTimes.Add((time + Time.time) - (delayTime / 2));
         seconds.Enqueue(time + Time.time);
         keys.Enqueue(key);
     }
@@ -116,8 +116,14 @@ public class GameManager : MonoBehaviour
 
         if (destroyedKeys == eventArrows.Count)
         {
-            menem.StopDancing();
-            UI.instance.ShowGameOverMenu();
+            StartCoroutine(Finish());
         }
+    }
+
+    private IEnumerator Finish()
+    {
+        menem.StopDancing();
+        yield return new WaitForSeconds(2.5f);
+        UI.instance.ShowGameOverMenu();
     }
 }

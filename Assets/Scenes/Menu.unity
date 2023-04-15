@@ -2968,7 +2968,7 @@ MonoBehaviour:
   _backButtonHowToPlayPanel: {fileID: 792826583}
   _backButtonCreditsPanel: {fileID: 1184231213}
   _gameScene: 1
-  _scoreScene: 0
+  _scoreScene: 2
 --- !u!114 &1709661598
 MonoBehaviour:
   m_ObjectHideFlags: 0

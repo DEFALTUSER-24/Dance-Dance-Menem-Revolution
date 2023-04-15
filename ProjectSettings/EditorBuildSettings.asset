@@ -9,8 +9,11 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/Prueba.unity
+    path: Assets/Scenes/Nivel.unity
     guid: 8e5f0df42d11f674fa0d5df717fd4ed6
+  - enabled: 1
+    path: Assets/Scenes/Scoreboard.unity
+    guid: 715c28f6f1490c0429ed06337401c1db
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a28e17e05d6864442af93f0e6b962a1a, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: c9548d6862d036b4c92d01ba6c528316, type: 2}
