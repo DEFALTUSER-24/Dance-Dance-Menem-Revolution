@@ -28,8 +28,11 @@ public class GameManager : MonoBehaviour
     public float currentTimer;
     private int _CurrentEvent;
 
-    [Header("Game Score")]
+    [Header("Player")]
+    [SerializeField] private Menem menem;
     private GameScore score;
+
+    private int destroyedKeys = 0;
     //[SerializeField] private int currentLevel;
 
     private void Awake()
@@ -105,5 +108,13 @@ public class GameManager : MonoBehaviour
         Destroy(currentArrow.gameObject);
         currentTimeEvent = 0;
         currentArrow = null;
+
+        destroyedKeys++;
+
+        if (destroyedKeys == eventArrows.Count)
+        {
+            menem.StopDancing();
+            UI.instance.ShowGameOverMenu();
+        }
     }
 }

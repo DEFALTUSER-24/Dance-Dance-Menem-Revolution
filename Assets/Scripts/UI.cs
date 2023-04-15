@@ -3,26 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UI : MonoBehaviour
 {
     public static UI instance;
 
+    [Header("Main menu scene")]
+    [SerializeField] private int            mainMenuScene;
+
     [Header("Select an initial menu")]
     [SerializeField] private UIInitialPanel initialPanel;
 
     [Header("In-game")]
-    [SerializeField] private GameObject inGamePanel;
-    [SerializeField] private TMP_Text gameScore;
+    [SerializeField] private GameObject     inGamePanel;
+    [SerializeField] private TMP_Text       gameScore;
 
     [Header("Scoreboard")]
-    [SerializeField] private GameObject scoreboardPanel;
+    [SerializeField] private GameObject     scoreboardPanel;
     [SerializeField] private TMP_InputField scoreboard;
 
     [Header("Game Over")]
-    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject     gameOverPanel;
     [SerializeField] private TMP_InputField scoreUploadInput;
-    [SerializeField] private TMP_Text serverErrorText;
+    [SerializeField] private TMP_Text       serverErrorText;
+    [SerializeField] private GameObject     uploadScoreButton;
+    [SerializeField] private GameObject     writeYourNameText;
 
     private void Awake()
     {
@@ -124,6 +130,15 @@ public class UI : MonoBehaviour
     public void OnScoreSaved()
     {
         ShowScoreUploadError("Puntaje guardado correctamente.");
-        //scoreUploadInput.gameObject.SetActive(false);
+        scoreUploadInput.gameObject.SetActive(false);
+        uploadScoreButton.SetActive(false);
+        writeYourNameText.SetActive(false);
+
+        scoreUploadInput.text = "";
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 }
