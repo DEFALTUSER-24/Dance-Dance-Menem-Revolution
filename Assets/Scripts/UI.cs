@@ -20,7 +20,6 @@ public class UI : MonoBehaviour
     [SerializeField] private TMP_Text       gameScore;
 
     [Header("Scoreboard")]
-    [SerializeField] private GameObject     scoreboardPanel;
     [SerializeField] private TMP_InputField scoreboard;
 
     [Header("Game Over")]
@@ -47,21 +46,22 @@ public class UI : MonoBehaviour
                 ShowInGameMenu();
                 break;
             case UIInitialPanel.Scoreboard:
-                ShowScoreboardMenu();
+                ServerRequest.instance.GetScores();
                 break;
         }
     }
-
     public void UpdateGameScore()
     {
         gameScore.text = "Puntaje: " + GameManager.instance.Score().Get();
     }
 
+    #region Scoreboard actions
+
     public void UpdateScoreboard(string json_data)
     {
         if (json_data == "")
         {
-            ShowScoreboardError();
+            ShowScoreboardError("No hay datos");
             return;
         }
 
@@ -82,38 +82,17 @@ public class UI : MonoBehaviour
         }
     }
 
-    public void ShowScoreboardError()
+    public void ShowScoreboardError(string error = "Error al obtener los datos del servidor")
     {
-        scoreboard.text = "Error al obtener los datos del servidor";
+        scoreboard.text = error;
     }
 
+    #endregion
+
+    #region Game Over panel actions
     public void ShowScoreUploadError(string errorDescription = "")
     {
         serverErrorText.text = errorDescription != "" ? errorDescription : "Error al subir el puntaje al servidor";
-    }
-
-    public void ShowGameOverMenu()
-    {
-        gameOverPanel.SetActive(true);
-
-        inGamePanel.SetActive(false);
-        //scoreboardPanel.SetActive(false);
-    }
-    
-    public void ShowInGameMenu()
-    {
-        inGamePanel.SetActive(true);
-
-        //scoreboardPanel.SetActive(false);
-        gameOverPanel.SetActive(false);
-    }
-
-    public void ShowScoreboardMenu()
-    {
-        //scoreboardPanel.SetActive(true);
-
-        inGamePanel.SetActive(false);
-        gameOverPanel.SetActive(false);
     }
 
     public void SaveScore()
@@ -137,8 +116,26 @@ public class UI : MonoBehaviour
         scoreUploadInput.text = "";
     }
 
+    #endregion
+
+    #region Menu panels/loaders
+
+    public void ShowGameOverMenu()
+    {
+        gameOverPanel.SetActive(true);
+        inGamePanel.SetActive(false);
+    }
+    
+    public void ShowInGameMenu()
+    {
+        inGamePanel.SetActive(true);
+        gameOverPanel.SetActive(false);
+    }
+
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(mainMenuScene);
     }
+
+    #endregion
 }

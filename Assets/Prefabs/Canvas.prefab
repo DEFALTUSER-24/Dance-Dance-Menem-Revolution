@@ -858,8 +858,8 @@ MonoBehaviour:
   initialPanel: 0
   inGamePanel: {fileID: 2111122219338340543}
   gameScore: {fileID: 2111122220417033247}
-  scoreboardPanel: {fileID: 2111122220417033241}
-  scoreboard: {fileID: 2111122220129706862}
+  scoreboardPanel: {fileID: 0}
+  scoreboard: {fileID: 0}
   gameOverPanel: {fileID: 2111122220113361761}
   scoreUploadInput: {fileID: 2111122220129706862}
   serverErrorText: {fileID: 2111122219666347279}

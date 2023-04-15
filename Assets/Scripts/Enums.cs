@@ -15,6 +15,7 @@ public enum KeypressPrecision
 
 public enum UIInitialPanel
 {
+    None,
     InGame,
     Scoreboard,
     GameOver
