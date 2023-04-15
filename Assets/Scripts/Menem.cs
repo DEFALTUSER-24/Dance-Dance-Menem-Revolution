@@ -4,6 +4,10 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Menem : MonoBehaviour
 {
+    [Header("Idle settings")]
+    [SerializeField] private float timeToBeginDancing = 5f;
+
+    [Header("Animation blend settings")]
     [SerializeField] [Range(0, 1)]  private float  blendCurve = 0.8f;
     [SerializeField]                private int    animationCount = 7;
     [SerializeField] [Range(0, 3)]  private float  transitionDuration = 0.5f;
@@ -12,13 +16,22 @@ public class Menem : MonoBehaviour
     private int activeLayer = 0;
     private bool switchingLayers = false;
     private AnimatorStateInfo stateInfo;
-    private bool shouldDance = true;
+    private bool shouldDance = false;
+
+    #region Unity methods
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
         animator.SetFloat("blend-main", Random.Range(1, animationCount));
     }
+
+    private void Start()
+    {
+        StartCoroutine(StartDancingTimer());
+    }
+
+    #endregion
 
     #region Idle animation to Blend Tree
 
@@ -74,9 +87,25 @@ public class Menem : MonoBehaviour
 
     #endregion
 
+    #region Dance Triggers
+
     public void StopDancing()
     {
         shouldDance = false;
         animator.SetTrigger("StopDancing");
     }
+
+    public void BeginDance()
+    {
+        shouldDance = true;
+        animator.SetTrigger("BeginDance");
+    }
+
+    IEnumerator StartDancingTimer()
+    {
+        yield return new WaitForSeconds(timeToBeginDancing);
+        BeginDance();
+    }
+
+    #endregion
 }
