@@ -79,7 +79,7 @@ public class UI : MonoBehaviour
 
             foreach (ServerScoreboardData data in json)
             {
-                scoreboard.text = scoreboard.text + "#" + posInBoard.ToString().PadLeft(2, '0') + " | " + data.name + " | Puntaje: " + data.user_score + " - Level: " + data.level + "\n";
+                scoreboard.text = scoreboard.text + "#" + posInBoard.ToString().PadLeft(2, '0') + " | " + data.name + " | Puntaje: " + data.user_score + "\n";
                 posInBoard++;
             }
         }
@@ -107,7 +107,13 @@ public class UI : MonoBehaviour
     {
         if (scoreUploadInput.text == "")
         {
-            ShowScoreUploadError("Tenés que escribir un nombre, máximo 24 letras.");
+            ShowScoreUploadError("Tenés que escribir un nombre, máximo 15 letras.");
+            return;
+        }
+
+        if (scoreUploadInput.text.Trim() == "")
+        {
+            ShowScoreUploadError("No trates de subir el dolar... poné una letra al menos.");
             return;
         }
 
