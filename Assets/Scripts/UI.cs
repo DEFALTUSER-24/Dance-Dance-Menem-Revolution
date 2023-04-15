@@ -59,27 +59,35 @@ public class UI : MonoBehaviour
 
     public void UpdateScoreboard(string json_data)
     {
-        if (json_data == "")
+        try
         {
-            ShowScoreboardError("No hay datos");
-            return;
+            if (json_data == "")
+            {
+                ShowScoreboardError("No hay datos");
+                return;
+            }
+
+            ServerScoreboardData[] json = JsonHelper.FromJson<ServerScoreboardData>(json_data);
+
+            if (json.Length == 0 || json == null)
+            {
+                ShowScoreboardError();
+                return;
+            }
+
+            int posInBoard = 1;
+
+            foreach (ServerScoreboardData data in json)
+            {
+                scoreboard.text = scoreboard.text + "#" + posInBoard.ToString().PadLeft(2, '0') + " | " + data.name + " | Puntaje: " + data.user_score + " - Level: " + data.level + "\n";
+                posInBoard++;
+            }
         }
-
-        ServerScoreboardData[] json = JsonHelper.FromJson<ServerScoreboardData>(json_data);
-
-        if (json.Length == 0 || json == null)
+        catch (System.Exception)
         {
             ShowScoreboardError();
-            return;
         }
-
-        int posInBoard = 1;
-
-        foreach (ServerScoreboardData data in json)
-        {
-            scoreboard.text = scoreboard.text + "#" + posInBoard.ToString().PadLeft(2, '0') + " | " + data.name + " | Puntaje: " + data.user_score + " - Level: " + data.level + "\n";
-            posInBoard++;
-        }
+        
     }
 
     public void ShowScoreboardError(string error = "Error al obtener los datos del servidor")
