@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class Field : MonoBehaviour
 {
-    //private Image img;
-    private KeyCode keyPressed;
-    public float errorMargin;
+    [Header("Image Feedback")]
+                                    private     Image       img;
+    [SerializeField] [Range(0, 1f)] private     float       _keyUpAlpha;
+    [SerializeField] [Range(0, 1f)] private     float       _keyDownAlpha;
+                                    private     KeyCode     keyPressed;
+    [Header("Error Margin")]
+                                    public      float       errorMargin;
 
     private HashSet<KeyCode> validKeyCodes;
     private Dictionary<ArrowKey, KeyCode> arrowKeyToKeyCodeMap;
@@ -24,6 +28,9 @@ public class Field : MonoBehaviour
             { ArrowKey.Left, KeyCode.LeftArrow },
             { ArrowKey.Right, KeyCode.RightArrow }
         };
+
+        img = GetComponent<Image>();
+        ChangeOpacity(_keyUpAlpha);
     }
 
     private void Update()
@@ -59,9 +66,10 @@ public class Field : MonoBehaviour
         {
             if (Input.GetKeyDown(kcode))
             {
+                ChangeOpacity(_keyDownAlpha);
                 keyPressed = kcode;
                 break;
-            }
+            } else if (Input.GetKeyUp(kcode)) ChangeOpacity(_keyUpAlpha);
         }
     }
 
@@ -90,5 +98,12 @@ public class Field : MonoBehaviour
         }
 
         GameManager.instance.DestroyCurrentKey();
+    }
+
+    private void ChangeOpacity(float i)
+    {
+        var tempColor = img.color;
+        tempColor.a = i;
+        img.color = tempColor;
     }
 }
