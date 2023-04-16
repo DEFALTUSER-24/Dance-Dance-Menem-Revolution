@@ -23,10 +23,11 @@ public class GameManager : MonoBehaviour
     public float currentTimeEvent = 0;
 
     [Header("Time Resources")]
-    public float delayTime;
-    private float _startTimer;
-    public float currentTimer;
-    private int _CurrentEvent;
+    public  float   beginLevelTime;
+    public  float   delayTime;
+    private float   _startTimer;
+    public  float   currentTimer;
+    private int     _CurrentEvent;
 
     [Header("Player")]
     [SerializeField] private Menem menem;

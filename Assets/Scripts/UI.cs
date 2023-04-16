@@ -15,6 +15,9 @@ public class UI : MonoBehaviour
     [Header("Select an initial menu")]
     [SerializeField] private UIInitialPanel initialPanel;
 
+    [Header("Start")]
+    [SerializeField] private GameObject     startPanel;
+
     [Header("In-game")]
     [SerializeField] private GameObject     inGamePanel;
     [SerializeField] private TMP_Text       gameScore;
@@ -43,7 +46,7 @@ public class UI : MonoBehaviour
                 ShowGameOverMenu();
                 break;
             case UIInitialPanel.InGame:
-                ShowInGameMenu();
+                ShowStartMenu();
                 break;
             case UIInitialPanel.Scoreboard:
                 ServerRequest.instance.GetScores();
@@ -136,12 +139,23 @@ public class UI : MonoBehaviour
 
     public void ShowGameOverMenu()
     {
+        startPanel.SetActive(false);
         gameOverPanel.SetActive(true);
         inGamePanel.SetActive(false);
     }
     
-    public void ShowInGameMenu()
+    public void ShowStartMenu()
     {
+        startPanel.SetActive(true);
+        inGamePanel.SetActive(false);
+        gameOverPanel.SetActive(false);
+        StartCoroutine(ShowInGameUI());
+    }
+
+    IEnumerator ShowInGameUI()
+    {
+        yield return new WaitForSeconds(GameManager.instance.beginLevelTime);
+        startPanel.SetActive(false);
         inGamePanel.SetActive(true);
         gameOverPanel.SetActive(false);
     }

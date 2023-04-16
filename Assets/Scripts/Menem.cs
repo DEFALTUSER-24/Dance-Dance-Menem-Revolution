@@ -4,9 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(Animator))]
 public class Menem : MonoBehaviour
 {
-    [Header("Idle settings")]
-    [SerializeField] private float timeToBeginDancing = 5f;
-
     [Header("Animation blend settings")]
     [SerializeField] [Range(0, 1)]  private float  blendCurve = 0.8f;
     [SerializeField]                private int    animationCount = 7;
@@ -103,7 +100,7 @@ public class Menem : MonoBehaviour
 
     IEnumerator StartDancingTimer()
     {
-        yield return new WaitForSeconds(timeToBeginDancing);
+        yield return new WaitForSeconds(GameManager.instance.beginLevelTime);
         BeginDance();
     }
 

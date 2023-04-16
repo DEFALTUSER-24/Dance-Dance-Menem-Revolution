@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -908,6 +908,7 @@ MonoBehaviour:
   canvas: {fileID: 1287924261}
   currentArrow: {fileID: 0}
   currentTimeEvent: 0
+  beginLevelTime: 2
   delayTime: 3
   currentTimer: 0
   menem: {fileID: 1074551608}
@@ -4924,6 +4925,10 @@ PrefabInstance:
     - target: {fileID: 2111122219282639992, guid: 196db635b7140d84c9cb0d3198d98c56, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2111122219425094225, guid: 196db635b7140d84c9cb0d3198d98c56, type: 3}
+      propertyPath: initialPanel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2111122219425094226, guid: 196db635b7140d84c9cb0d3198d98c56, type: 3}
       propertyPath: m_Pivot.x
