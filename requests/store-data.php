@@ -8,10 +8,28 @@
     //Connect to database
     database::Connect();
 
+    function clamp($current, $min, $max) {
+        return max($min, min($max, $current));
+    }
+
     //Save escaped values to prevent SQL Injection)
-    $username = database::Escape($_POST["name"]);
-    $score = intval(database::Escape($_POST["score"]));
-    $level = intval(database::Escape($_POST["level"]));
+    $username = trim(
+        substr(database::Escape($_POST["name"]), 0, 20)
+    );
+
+    //Level should be taken from POST but for now we're using 1 by default.
+    $level = 1; //intval(database::Escape($_POST["level"]))
+
+    $score = clamp(
+        intval(database::Escape($_POST["score"])),
+        -99999, //min score
+        999999 //max score
+    );
+
+    //If username is invalid, throw error
+    if ($username == "") {
+        request::EndWithError("El nombre de usuario no puede estar vacío.");
+    }
 
     //Send changes to database
     database::Query("INSERT INTO users_score (name, user_score, level) VALUES ('" . $username . "', " . $score . ", " . $level . ")");
