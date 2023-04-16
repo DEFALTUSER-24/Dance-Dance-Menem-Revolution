@@ -908,7 +908,7 @@ MonoBehaviour:
   canvas: {fileID: 1287924261}
   currentArrow: {fileID: 0}
   currentTimeEvent: 0
-  beginLevelTime: 2
+  beginLevelTime: 5
   delayTime: 3
   currentTimer: 0
   menem: {fileID: 1074551608}
@@ -2194,6 +2194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1088076691}
   - component: {fileID: 1088076690}
+  - component: {fileID: 1088076692}
   m_Layer: 0
   m_Name: Musica
   m_TagString: Untagged
@@ -2212,7 +2213,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -4597995212300156873, guid: 4a1872af70f7f6a4fabe9e2e2128c4a2, type: 2}
   m_audioClip: {fileID: 8300000, guid: 610c6b53d5a7a024c945bd64947cf970, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -2312,6 +2313,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1088076692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088076689}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 711cd464461479747a29f6f188c88d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _au: {fileID: 1088076690}
 --- !u!4 &1098777611 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dccac756e37365a49b8a3b1f1e5a8f9f, type: 3}

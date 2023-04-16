@@ -25,7 +25,7 @@ public class KeyPlayer : MonoBehaviour
             string[] fields = lines[i].Split(';');
 
             GameManager.instance.AddKeyEvent(
-                float.Parse(fields[1]), //Time
+                float.Parse(fields[1]) - 1.925f, //Time
                 (ArrowKey)System.Enum.Parse(typeof(ArrowKey), fields[0]) //Key
             );
         }

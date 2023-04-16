@@ -77,8 +77,8 @@ public class GameManager : MonoBehaviour
 
     internal void AddKeyEvent(float time, ArrowKey key)
     {
-        eventTimes.Add((time + Time.time) - (delayTime / 2));
-        seconds.Enqueue(time + Time.time);
+        eventTimes.Add((time + Time.time + beginLevelTime) - (delayTime / 2));
+        seconds.Enqueue(time + Time.time + beginLevelTime);
         keys.Enqueue(key);
     }
 
