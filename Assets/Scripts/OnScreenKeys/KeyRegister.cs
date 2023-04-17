@@ -7,7 +7,6 @@ public class KeyRegister : MonoBehaviour
 {
     [SerializeField] private  string  fileName;
 
-    private Dictionary<ArrowKey, float> keyDownTimes = new Dictionary<ArrowKey, float>();
     private string filePath;
 
     private HashSet<KeyCode> validKeyCodes;
@@ -52,7 +51,6 @@ public class KeyRegister : MonoBehaviour
 
     private void LogKey(ArrowKey key)
     {
-        keyDownTimes[key] = Time.time;
         Debug.Log("Key: " + key + " pressed at: " + Time.time);
         File.AppendAllText(filePath, key + ";" + Time.time + "\n");
     }

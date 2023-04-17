@@ -12,7 +12,7 @@ public class Music : MonoBehaviour
 
     IEnumerator Begin()
     {
-        yield return new WaitForSeconds(GameManager.instance.beginLevelTime + 0.25f);
+        yield return new WaitForSeconds(GameManager.instance.beginLevelTime + GameManager.instance.songDelayTime);
         _au.Play();
     }
 }

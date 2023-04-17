@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     [Header("Time Resources")]
     public  float   beginLevelTime;
     public  float   delayTime;
+    public  float   songDelayTime;
     private float   _startTimer;
     public  float   currentTimer;
     private int     _CurrentEvent;
@@ -77,8 +78,8 @@ public class GameManager : MonoBehaviour
 
     internal void AddKeyEvent(float time, ArrowKey key)
     {
-        eventTimes.Add((time + Time.time + beginLevelTime) - (delayTime / 2));
-        seconds.Enqueue(time + Time.time + beginLevelTime);
+        eventTimes.Add(time + Time.time - (delayTime / 2));
+        seconds.Enqueue(time + Time.time);
         keys.Enqueue(key);
     }
 

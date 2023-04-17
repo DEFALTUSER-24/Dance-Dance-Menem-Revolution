@@ -214,7 +214,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 300}
+  m_SizeDelta: {x: 633.15, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118836901
 MonoBehaviour:
@@ -1642,6 +1642,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuScene: 0
   initialPanel: 2
+  startPanel: {fileID: 0}
   inGamePanel: {fileID: 0}
   gameScore: {fileID: 0}
   scoreboard: {fileID: 118836901}

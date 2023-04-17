@@ -100,7 +100,7 @@ public class Menem : MonoBehaviour
 
     IEnumerator StartDancingTimer()
     {
-        yield return new WaitForSeconds(GameManager.instance.beginLevelTime);
+        yield return new WaitForSeconds(GameManager.instance.beginLevelTime + GameManager.instance.songDelayTime);
         BeginDance();
     }
 
