@@ -5,9 +5,16 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public ArrowKey ID;
+    [SerializeField] private RectTransform _transform;
+    [SerializeField] private Vector3 _initialPos;
+    [SerializeField] private Vector3 _fieldPos;
+    [SerializeField] private Vector3 _endPos;
 
     void Start()
     {
+        _transform.localPosition = _initialPos;
+        _fieldPos = new Vector3(GameManager.instance.GetField().x, GameManager.instance.GetField().y, 0);
+
         switch (ID)
         {
             case ArrowKey.Up:
@@ -24,16 +31,31 @@ public class Arrow : MonoBehaviour
                 break;
         }
 
-        LeanTween.moveLocal(this.gameObject, GameManager.instance.GetField(), GameManager.instance.delayTime - 0.5f);
+        float d1 = Vector3.Distance(_initialPos, _fieldPos);
+        float d2 = Vector3.Distance(_fieldPos, _endPos);
+        float t = GameManager.instance.delayTime * d2 / d1;
+
+        LeanTween.moveLocal(this.gameObject, _endPos, GameManager.instance.delayTime + t);
     }
 
-    public static Arrow CreateArrow(GameObject arrowPrefab, Transform parent, Vector3 localPosition, ArrowKey id)
+    public void DestroyMe(bool wasGood, bool wasPressed)
+    {
+        if ((!wasGood && wasPressed) || (wasGood && wasPressed)) Destroy(this.gameObject);
+        else
+        {
+            float d1 = Vector3.Distance(_initialPos, _fieldPos);
+            float d2 = Vector3.Distance(_fieldPos, _endPos);
+            float t = GameManager.instance.delayTime * d2 / d1;
+            Destroy(this.gameObject, t);
+        }
+    }
+
+    public static Arrow CreateArrow(GameObject arrowPrefab, Transform parent, ArrowKey id)
     {
         GameObject arrowObject = Instantiate(arrowPrefab);
         RectTransform arrowTransform = arrowObject.GetComponent<RectTransform>();
         Arrow arrowScript = arrowObject.GetComponent<Arrow>();
         arrowTransform.SetParent(parent);
-        arrowTransform.localPosition = localPosition;
         arrowScript.ID = id;
         arrowObject.SetActive(false);
         return arrowScript;

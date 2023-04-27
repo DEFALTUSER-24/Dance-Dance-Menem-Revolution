@@ -8,8 +8,9 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     [Header("Objects")]
-    [SerializeField] private GameObject arrow;
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject         _arrow;
+    [SerializeField] private Canvas             _canvas;
+    [SerializeField] private RectTransform      _field;
 
     [Header("Queues & Lists")]
     private Queue<ArrowKey> keys = new Queue<ArrowKey>();
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     internal void AddKeyEvent(float time, ArrowKey key)
     {
-        eventTimes.Add(time + Time.time - (delayTime / 2));
+        eventTimes.Add(time + Time.time - delayTime);
         seconds.Enqueue(time + Time.time);
         keys.Enqueue(key);
     }
@@ -90,7 +91,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < index; i++)
         {
             ArrowKey key = keys.Dequeue();
-            Arrow arrowScript = Arrow.CreateArrow(arrow, canvas.transform, new Vector3(450, -150, 0), key);
+            Arrow arrowScript = Arrow.CreateArrow(_arrow, _canvas.transform, key);
             eventArrows.Add(arrowScript);
             arrows.Enqueue(arrowScript);
         }
@@ -98,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     public Vector3 GetField()
     {
-        return new Vector3(-450, -150, 0);
+        return _field.localPosition;
     }
 
     public GameScore Score()
@@ -106,20 +107,17 @@ public class GameManager : MonoBehaviour
         return score;
     }
 
-    public void DestroyCurrentKey()
+    public void DestroyCurrentKey(bool wasGood, bool wasPressed)
     {
         if (!currentArrow.isActiveAndEnabled) return;
 
-        Destroy(currentArrow.gameObject);
+        currentArrow.DestroyMe(wasGood, wasPressed);
         currentTimeEvent = 0;
         currentArrow = null;
 
         destroyedKeys++;
 
-        if (destroyedKeys == eventArrows.Count)
-        {
-            StartCoroutine(Finish());
-        }
+        if (destroyedKeys == eventArrows.Count) StartCoroutine(Finish());
     }
 
     private IEnumerator Finish()

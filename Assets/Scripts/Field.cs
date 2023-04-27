@@ -11,7 +11,8 @@ public class Field : MonoBehaviour
     [SerializeField] [Range(0, 1f)] private     float       _keyDownAlpha;
                                     private     KeyCode     keyPressed;
     [Header("Error Margin")]
-                                    public      float       errorMargin;
+                                    public      float       errorMarginBeforeField;
+                                    public      float       errorMarginAfterField;
 
     private HashSet<KeyCode> validKeyCodes;
     private Dictionary<ArrowKey, KeyCode> arrowKeyToKeyCodeMap;
@@ -37,24 +38,24 @@ public class Field : MonoBehaviour
     {
         if (GameManager.instance.currentArrow == null && GameManager.instance.currentTimeEvent == 0) return;
 
-        float v = GameManager.instance.currentTimer - errorMargin;
-        float b = GameManager.instance.currentTimer + errorMargin;
+        float v = GameManager.instance.currentTimer - errorMarginAfterField;
+        float b = GameManager.instance.currentTimer + errorMarginBeforeField;
         DetectKeyPressed();
 
         if (keyPressed != KeyCode.None)
         {
             if (v < GameManager.instance.currentTimeEvent && b > GameManager.instance.currentTimeEvent)
             {
-                KeypressResult(keyPressed == arrowKeyToKeyCodeMap[GameManager.instance.currentArrow.ID]);
+                KeypressResult(keyPressed == arrowKeyToKeyCodeMap[GameManager.instance.currentArrow.ID], true);
             }
             else
             {
-                KeypressResult(false);
+                KeypressResult(false, true);
             }
         }
-        else if (b > (GameManager.instance.currentTimeEvent + errorMargin) * 1.1f && keyPressed == KeyCode.None)
+        else if (b > (GameManager.instance.currentTimeEvent + errorMarginAfterField) && keyPressed == KeyCode.None)
         {
-            KeypressResult(false);
+            KeypressResult(false, false);
         }
     }
 
@@ -73,11 +74,11 @@ public class Field : MonoBehaviour
         }
     }
 
-    private void KeypressResult(bool wasGood)
+    private void KeypressResult(bool wasGood, bool wasPressed)
     {
         if (!wasGood)
         {
-            GameManager.instance.DestroyCurrentKey();
+            GameManager.instance.DestroyCurrentKey(wasGood, wasPressed);
             GameManager.instance.Score().Update(KeypressPrecision.Bad);
             return;
         }
@@ -97,7 +98,7 @@ public class Field : MonoBehaviour
                 break;
         }
 
-        GameManager.instance.DestroyCurrentKey();
+        GameManager.instance.DestroyCurrentKey(wasGood, wasPressed);
     }
 
     private void ChangeOpacity(float i)

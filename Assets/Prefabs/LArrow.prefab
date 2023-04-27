@@ -90,3 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
+  _transform: {fileID: 4922233731121946060}
+  _initialPos: {x: 450, y: -150, z: 0}
+  _fieldPos: {x: 0, y: 0, z: 0}
+  _endPos: {x: -300, y: -150, z: 0}
