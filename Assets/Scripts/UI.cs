@@ -24,6 +24,9 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject     backgroundCanvas;
     [SerializeField] private TMP_Text       keypressResult;
 
+    [Header("Pause menu")]
+    [SerializeField] private GameObject     pauseMenuPanel;
+
     [Header("Scoreboard")]
     [SerializeField] private TMP_InputField scoreboard;
 
@@ -58,7 +61,8 @@ public class UI : MonoBehaviour
                 break;
         }
 
-        keypressResult.text = "";
+        if (keypressResult != null)
+            keypressResult.text = "";
     }
 
     #region Game Score
@@ -90,7 +94,7 @@ public class UI : MonoBehaviour
                 keypressResult.color = new Color(255, 255, 255); //white
                 break;
             case KeypressPrecision.Bad:
-                keypressResult.text = "Mal";
+                keypressResult.text = "Malisimo";
                 keypressResult.color = new Color(255, 0, 0); //red
                 break;
         }
@@ -224,6 +228,17 @@ public class UI : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void TogglePauseMenu()
+    {
+        pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
+    }
+
+    public void Resume()
+    {
+        TogglePauseMenu();
+        GameManager.instance.ToggleGamePause();
     }
 
     #endregion

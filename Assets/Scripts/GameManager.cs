@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas             _arrowCanvas;
     [SerializeField] private RectTransform      _field;
 
+    [Header("Music")]
+    public Music musicManager;
+
     [Header("Queues & Lists")]
     private Queue<ArrowKey> keys = new Queue<ArrowKey>();
     private Queue<Arrow> arrows = new Queue<Arrow>();
@@ -37,14 +40,19 @@ public class GameManager : MonoBehaviour
     private GameScore score;
 
     private int destroyedKeys = 0;
+    public bool gamePaused = false;
     //[SerializeField] private int currentLevel;
 
     private void Awake()
     {
         if (instance == null) instance = this;
         else Destroy(this);
+
         score = new GameScore();
         score.Reset();
+
+        gamePaused = false;
+        Time.timeScale = 1;
     }
 
     private void Start()
@@ -54,6 +62,14 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            UI.instance.TogglePauseMenu();
+            ToggleGamePause();
+        }
+
+        if (gamePaused) return;
+
         currentTimer = Time.time - _startTimer;
 
         if (arrows.Count == 0 && currentArrow == null) return;
@@ -126,5 +142,12 @@ public class GameManager : MonoBehaviour
         menem.StopDancing();
         yield return new WaitForSeconds(2.5f);
         UI.instance.ShowGameOverMenu();
+    }
+
+    public void ToggleGamePause()
+    {
+        musicManager.ToggleMusic();
+        Time.timeScale = gamePaused ? 1 : 0;
+        gamePaused = !gamePaused;
     }
 }

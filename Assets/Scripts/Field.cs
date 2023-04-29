@@ -35,7 +35,8 @@ public class Field : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.currentArrow == null && GameManager.instance.currentTimeEvent == 0) return;
+        if ((GameManager.instance.currentArrow == null && GameManager.instance.currentTimeEvent == 0) ||
+            GameManager.instance.gamePaused) return;
 
         float v = GameManager.instance.currentTimer - errorMarginAfterField;
         float b = GameManager.instance.currentTimer + errorMarginBeforeField;
