@@ -22,8 +22,8 @@
 
     $score = clamp(
         intval(database::Escape($_POST["score"])),
-        -99999, //min score
-        999999 //max score
+        -31800, //min score
+        159000 //max score
     );
 
     //If username is invalid, throw error
