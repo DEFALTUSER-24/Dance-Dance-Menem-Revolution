@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
 
     private int destroyedKeys = 0;
     public bool gamePaused = false;
+    private bool _gameFinished = false;
     //[SerializeField] private int currentLevel;
 
     private void Awake()
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         score.Reset();
 
         gamePaused = false;
+        _gameFinished = false;
         Time.timeScale = 1;
     }
 
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_gameFinished)
         {
             UI.instance.TogglePauseMenu();
             ToggleGamePause();
@@ -139,6 +141,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator Finish()
     {
+        _gameFinished = true;
         menem.StopDancing();
         yield return new WaitForSeconds(2.5f);
         UI.instance.ShowGameOverMenu();
