@@ -21,6 +21,8 @@ public class GameScore
                 break;
         }
 
+        UI.instance.UpdateKeypressResult(result);
+
         Mathf.Clamp(_currentScore, 0, Mathf.Infinity);
 
         OnUpdate();

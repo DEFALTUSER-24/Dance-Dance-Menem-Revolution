@@ -22,6 +22,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject     inGamePanel;
     [SerializeField] private TMP_Text       gameScore;
     [SerializeField] private GameObject     backgroundCanvas;
+    [SerializeField] private TMP_Text       keypressResult;
 
     [Header("Scoreboard")]
     [SerializeField] private TMP_InputField scoreboard;
@@ -33,6 +34,8 @@ public class UI : MonoBehaviour
     [SerializeField] private TMP_Text       serverErrorText;
     [SerializeField] private GameObject     uploadScoreButton;
     [SerializeField] private GameObject     writeYourNameText;
+
+    private Coroutine keypressResultCoroutine;
 
     private void Awake()
     {
@@ -54,6 +57,8 @@ public class UI : MonoBehaviour
                 ServerRequest.instance.GetScores();
                 break;
         }
+
+        keypressResult.text = "";
     }
 
     #region Game Score
@@ -66,6 +71,40 @@ public class UI : MonoBehaviour
     private void UpdateFinalScore()
     {
         finalScore.text = "Tu deuda: " + GameManager.instance.Score().Get();
+    }
+
+    public void UpdateKeypressResult(KeypressPrecision precision)
+    {
+        switch (precision)
+        {
+            case KeypressPrecision.Excellent:
+                keypressResult.text = "Excelente";
+                keypressResult.color = new Color(0, 255, 0); //green
+                break;
+            case KeypressPrecision.VeryGood:
+                keypressResult.text = "Muy bien";
+                keypressResult.color = new Color(255, 0, 255); //yellow
+                break;
+            case KeypressPrecision.Good:
+                keypressResult.text = "Bien";
+                keypressResult.color = new Color(255, 255, 255); //white
+                break;
+            case KeypressPrecision.Bad:
+                keypressResult.text = "Mal";
+                keypressResult.color = new Color(255, 0, 0); //red
+                break;
+        }
+
+        if (keypressResultCoroutine != null)
+            StopCoroutine(keypressResultCoroutine);
+
+        keypressResultCoroutine = StartCoroutine(HideKeypressResultCoroutine());
+    }
+
+    IEnumerator HideKeypressResultCoroutine()
+    {
+        yield return new WaitForSeconds(1);
+        keypressResult.text = "";
     }
 
     #endregion
