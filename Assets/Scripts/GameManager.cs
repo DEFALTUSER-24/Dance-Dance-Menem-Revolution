@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject         _arrow;
     [SerializeField] private Canvas             _canvas;
+    [SerializeField] private Canvas             _arrowCanvas;
     [SerializeField] private RectTransform      _field;
 
     [Header("Queues & Lists")]
@@ -91,7 +92,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < index; i++)
         {
             ArrowKey key = keys.Dequeue();
-            Arrow arrowScript = Arrow.CreateArrow(_arrow, _canvas.transform, key);
+            Arrow arrowScript = Arrow.CreateArrow(_arrow, _arrowCanvas.transform, key);
             eventArrows.Add(arrowScript);
             arrows.Enqueue(arrowScript);
         }

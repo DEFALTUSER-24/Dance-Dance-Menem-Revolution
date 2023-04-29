@@ -21,6 +21,7 @@ public class UI : MonoBehaviour
     [Header("In-game")]
     [SerializeField] private GameObject     inGamePanel;
     [SerializeField] private TMP_Text       gameScore;
+    [SerializeField] private GameObject     backgroundCanvas;
 
     [Header("Scoreboard")]
     [SerializeField] private TMP_InputField scoreboard;
@@ -142,6 +143,7 @@ public class UI : MonoBehaviour
         startPanel.SetActive(false);
         gameOverPanel.SetActive(true);
         inGamePanel.SetActive(false);
+        backgroundCanvas.SetActive(false);
     }
     
     public void ShowStartMenu()
@@ -149,6 +151,7 @@ public class UI : MonoBehaviour
         startPanel.SetActive(true);
         inGamePanel.SetActive(false);
         gameOverPanel.SetActive(false);
+        backgroundCanvas.SetActive(false);
         StartCoroutine(ShowInGameUI());
     }
 
@@ -158,6 +161,7 @@ public class UI : MonoBehaviour
         startPanel.SetActive(false);
         inGamePanel.SetActive(true);
         gameOverPanel.SetActive(false);
+        backgroundCanvas.SetActive(true);
     }
 
     public void LoadMainMenu()

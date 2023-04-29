@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Field : MonoBehaviour
 {
     [Header("Image Feedback")]
-                                    private     Image       img;
+    [SerializeField]                private     Image       _backColor;
     [SerializeField] [Range(0, 1f)] private     float       _keyUpAlpha;
     [SerializeField] [Range(0, 1f)] private     float       _keyDownAlpha;
                                     private     KeyCode     keyPressed;
@@ -30,7 +30,6 @@ public class Field : MonoBehaviour
             { ArrowKey.Right, KeyCode.RightArrow }
         };
 
-        img = GetComponent<Image>();
         ChangeOpacity(_keyUpAlpha);
     }
 
@@ -103,8 +102,8 @@ public class Field : MonoBehaviour
 
     private void ChangeOpacity(float i)
     {
-        var tempColor = img.color;
+        var tempColor = _backColor.color;
         tempColor.a = i;
-        img.color = tempColor;
+        _backColor.color = tempColor;
     }
 }
