@@ -1210,6 +1210,7 @@ MonoBehaviour:
   backgroundCanvas: {fileID: 0}
   scoreboard: {fileID: 0}
   gameOverPanel: {fileID: 2111122220113361761}
+  finalScore: {fileID: 6929763056864381299}
   scoreUploadInput: {fileID: 2111122220129706862}
   serverErrorText: {fileID: 2111122219666347279}
   uploadScoreButton: {fileID: 2111122219945032499}
@@ -2801,7 +2802,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2111122219425094225}
         m_TargetAssemblyTypeName: UI, Assembly-CSharp
-        m_MethodName: SaveScore
+        m_MethodName: ReloadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

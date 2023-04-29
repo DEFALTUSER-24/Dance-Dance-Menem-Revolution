@@ -28,6 +28,7 @@ public class UI : MonoBehaviour
 
     [Header("Game Over")]
     [SerializeField] private GameObject     gameOverPanel;
+    [SerializeField] private TMP_Text       finalScore;
     [SerializeField] private TMP_InputField scoreUploadInput;
     [SerializeField] private TMP_Text       serverErrorText;
     [SerializeField] private GameObject     uploadScoreButton;
@@ -54,10 +55,20 @@ public class UI : MonoBehaviour
                 break;
         }
     }
+
+    #region Game Score
+
     public void UpdateGameScore()
     {
         gameScore.text = "Puntaje: " + GameManager.instance.Score().Get();
     }
+
+    private void UpdateFinalScore()
+    {
+        finalScore.text = "Tu deuda: " + GameManager.instance.Score().Get();
+    }
+
+    #endregion
 
     #region Scoreboard actions
 
@@ -140,6 +151,8 @@ public class UI : MonoBehaviour
 
     public void ShowGameOverMenu()
     {
+        UpdateFinalScore();
+
         startPanel.SetActive(false);
         gameOverPanel.SetActive(true);
         inGamePanel.SetActive(false);
@@ -167,6 +180,11 @@ public class UI : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(mainMenuScene);
+    }
+
+    public void ReloadLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     #endregion
