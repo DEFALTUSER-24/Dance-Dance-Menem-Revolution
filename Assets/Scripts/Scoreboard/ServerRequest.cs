@@ -7,6 +7,8 @@ public class ServerRequest : MonoBehaviour
 {
     public static ServerRequest instance;
 
+    private string server_url = "https://defaltuser.000webhostapp.com/menem/";
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -22,7 +24,7 @@ public class ServerRequest : MonoBehaviour
 
     IEnumerator GetScores_Coroutine()
     {
-        string url = "https://defaltuser.000webhostapp.com/menem/?action=get-scores";
+        string url = server_url + "?action=get-scores-new";
         using (UnityWebRequest webRequest = UnityWebRequest.Get(url))
         {
             yield return webRequest.SendWebRequest();
@@ -45,13 +47,13 @@ public class ServerRequest : MonoBehaviour
     //public void SaveScore(int playerScore, string playerName, int gameLevel)
     public void SaveScore(int playerScore, string playerName)
     {
-        int gameLevel = 1; //Cambiar esto cuando se agreguen mas niveles
+        int gameLevel = 2; //Cambiar esto cuando se agreguen mas niveles
         StartCoroutine(SaveScore_Coroutine(playerScore, playerName, gameLevel));
     }
 
     IEnumerator SaveScore_Coroutine(int playerScore, string playerName, int gameLevel)
     {
-        string url = "https://defaltuser.000webhostapp.com/menem/?action=add-score";
+        string url = server_url + "?action=add-score-new";
         WWWForm form = new WWWForm();
         form.AddField("name", playerName);
         form.AddField("score", playerScore);
