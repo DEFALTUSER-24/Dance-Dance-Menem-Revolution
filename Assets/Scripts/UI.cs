@@ -1,13 +1,16 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UI : MonoBehaviour
 {
     public static UI instance;
+
+    [Header("EventSystem")]
+    [SerializeField] private GameObject     _gameOverButton;
+    [SerializeField] private GameObject     _pauseButton;
 
     [Header("Main menu scene")]
     [SerializeField] private int            mainMenuScene;
@@ -22,6 +25,7 @@ public class UI : MonoBehaviour
     [SerializeField] private GameObject     inGamePanel;
     [SerializeField] private TMP_Text       gameScore;
     [SerializeField] private GameObject     backgroundCanvas;
+    [SerializeField] private GameObject     arrowsCanvas;
     [SerializeField] private TMP_Text       keypressResult;
 
     [Header("Pause menu")]
@@ -200,24 +204,30 @@ public class UI : MonoBehaviour
         gameOverPanel.SetActive(true);
         inGamePanel.SetActive(false);
         backgroundCanvas.SetActive(false);
+        arrowsCanvas.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(_gameOverButton);
     }
     
     public void ShowStartMenu()
     {
+        GameManager.instance.currentGameState = GameState.Start;
         startPanel.SetActive(true);
         inGamePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         backgroundCanvas.SetActive(false);
+        arrowsCanvas.SetActive(false);
         StartCoroutine(ShowInGameUI());
     }
 
     IEnumerator ShowInGameUI()
     {
         yield return new WaitForSeconds(GameManager.instance.beginLevelTime);
+        GameManager.instance.currentGameState = GameState.Game;
         startPanel.SetActive(false);
         inGamePanel.SetActive(true);
         gameOverPanel.SetActive(false);
         backgroundCanvas.SetActive(true);
+        arrowsCanvas.SetActive(true);
     }
 
     public void LoadMainMenu()
@@ -232,7 +242,24 @@ public class UI : MonoBehaviour
 
     public void TogglePauseMenu()
     {
-        pauseMenuPanel.SetActive(!pauseMenuPanel.activeSelf);
+        bool isActive = !pauseMenuPanel.activeSelf;
+        pauseMenuPanel.SetActive(isActive);
+        EventSystem.current.SetSelectedGameObject(_pauseButton);
+
+        if(GameManager.instance.currentGameState == GameState.Game)
+        {
+            inGamePanel.SetActive(!isActive);
+            backgroundCanvas.SetActive(!isActive);
+            arrowsCanvas.SetActive(!isActive);
+            startPanel.SetActive(false);
+        }
+        else if(GameManager.instance.currentGameState == GameState.Start)
+        {
+            startPanel.SetActive(!isActive);
+            inGamePanel.SetActive(false);
+            backgroundCanvas.SetActive(false);
+            arrowsCanvas.SetActive(false);
+        }
     }
 
     public void Resume()

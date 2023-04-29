@@ -1,4 +1,5 @@
-public enum ArrowKey { 
+public enum ArrowKey 
+{ 
     Up, 
     Down, 
     Left, 
@@ -19,4 +20,11 @@ public enum UIInitialPanel
     InGame,
     Scoreboard,
     GameOver
+}
+
+public enum GameState
+{
+    Start,
+    Game,
+    Finish
 }

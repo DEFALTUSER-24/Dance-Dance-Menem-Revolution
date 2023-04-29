@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,7 +9,7 @@ public class GameManager : MonoBehaviour
     [Header("Objects")]
     [SerializeField] private GameObject         _arrow;
     [SerializeField] private Canvas             _canvas;
-    [SerializeField] private Canvas             _arrowCanvas;
+    [SerializeField] private GameObject         _arrowCanvas;
     [SerializeField] private RectTransform      _field;
 
     [Header("Music")]
@@ -24,8 +23,9 @@ public class GameManager : MonoBehaviour
     private List<Arrow> eventArrows = new List<Arrow>();
 
     [Header("Currents")]
-    public Arrow currentArrow = null;
-    public float currentTimeEvent = 0;
+    public Arrow        currentArrow = null;
+    public float        currentTimeEvent = 0;
+    public GameState    currentGameState;
 
     [Header("Time Resources")]
     public  float   beginLevelTime;
