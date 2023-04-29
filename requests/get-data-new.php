@@ -3,7 +3,7 @@
     database::connect();
 
     //Query the database for results
-    $query_result = database::Query("SELECT name, user_score, level FROM users_score WHERE level = '1' ORDER BY user_score DESC LIMIT 10");
+    $query_result = database::Query("SELECT name, user_score, level FROM users_score WHERE level = '2' ORDER BY user_score DESC LIMIT 10");
 
     //If no result was found, end with error.
     if (!database::Result($query_result))
