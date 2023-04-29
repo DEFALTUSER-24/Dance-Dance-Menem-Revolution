@@ -5,13 +5,13 @@ using System.IO;
 
 public class KeyPlayer : MonoBehaviour
 {
-    [SerializeField] private string fileName;
+    [SerializeField] private string[] fileNames;
 
     void Start()
     {
         Debug.Log("KEY PLAYER STARTED");
 
-        string filePath = Path.Combine(Application.streamingAssetsPath, fileName + ".csv");
+        string filePath = Path.Combine(Application.streamingAssetsPath, fileNames[Random.Range(0, fileNames.Length)] + ".csv");
         if (!File.Exists(filePath))
         {
             Debug.LogError("File does not exist.");
