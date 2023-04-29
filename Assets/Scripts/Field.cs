@@ -17,8 +17,8 @@ public class Field : MonoBehaviour
     private HashSet<KeyCode> validKeyCodes;
     private Dictionary<ArrowKey, KeyCode> arrowKeyToKeyCodeMap;
 
-    private const float excellentThreshold = 0.1f;
-    private const float veryGoodThreshold = 0.5f;
+    private const float excellentThreshold = 0.05f;
+    private const float veryGoodThreshold = 0.1f;
 
     private void Start()
     {
