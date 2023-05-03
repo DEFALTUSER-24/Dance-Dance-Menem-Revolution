@@ -1,7 +1,7 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class Field : MonoBehaviour
 {
@@ -9,27 +9,16 @@ public class Field : MonoBehaviour
     [SerializeField]                private     Image       _backColor;
     [SerializeField] [Range(0, 1f)] private     float       _keyUpAlpha;
     [SerializeField] [Range(0, 1f)] private     float       _keyDownAlpha;
-                                    private     KeyCode     keyPressed;
+                                    private     ArrowKey     keyPressed;
     [Header("Error Margin")]
                                     public      float       errorMarginBeforeField;
                                     public      float       errorMarginAfterField;
-
-    private HashSet<KeyCode> validKeyCodes;
-    private Dictionary<ArrowKey, KeyCode> arrowKeyToKeyCodeMap;
 
     private const float excellentThreshold = 0.05f;
     private const float veryGoodThreshold = 0.1f;
 
     private void Start()
     {
-        validKeyCodes = new HashSet<KeyCode> { KeyCode.UpArrow, KeyCode.DownArrow, KeyCode.LeftArrow, KeyCode.RightArrow };
-        arrowKeyToKeyCodeMap = new Dictionary<ArrowKey, KeyCode> {
-            { ArrowKey.Up, KeyCode.UpArrow },
-            { ArrowKey.Down, KeyCode.DownArrow },
-            { ArrowKey.Left, KeyCode.LeftArrow },
-            { ArrowKey.Right, KeyCode.RightArrow }
-        };
-
         ChangeOpacity(_keyUpAlpha);
     }
 
@@ -42,18 +31,18 @@ public class Field : MonoBehaviour
         float b = GameManager.instance.currentTimer + errorMarginBeforeField;
         DetectKeyPressed();
 
-        if (keyPressed != KeyCode.None)
+        if (keyPressed != ArrowKey.None)
         {
             if (v < GameManager.instance.currentTimeEvent && b > GameManager.instance.currentTimeEvent)
             {
-                KeypressResult(keyPressed == arrowKeyToKeyCodeMap[GameManager.instance.currentArrow.ID], true);
+                KeypressResult(keyPressed == GameManager.instance.currentArrow.ID, true);
             }
             else
             {
                 KeypressResult(false, true);
             }
         }
-        else if (b > (GameManager.instance.currentTimeEvent + errorMarginAfterField) && keyPressed == KeyCode.None)
+        else if (b > (GameManager.instance.currentTimeEvent + errorMarginAfterField) && keyPressed == ArrowKey.None)
         {
             KeypressResult(false, false);
         }
@@ -61,16 +50,31 @@ public class Field : MonoBehaviour
 
     private void DetectKeyPressed()
     {
-        keyPressed = KeyCode.None;
+        keyPressed = ArrowKey.None;
 
-        foreach (KeyCode kcode in validKeyCodes)
+        foreach (InputAction action in GameManager.instance.pInput.actions)
         {
-            if (Input.GetKeyDown(kcode))
+            if (GameManager.instance.pInput.actions[action.name].WasPressedThisFrame())
             {
                 ChangeOpacity(_keyDownAlpha);
-                keyPressed = kcode;
+                switch (action.name)
+                {
+                    case "Up":
+                        keyPressed = ArrowKey.Up;
+                        break;
+                    case "Down":
+                        keyPressed = ArrowKey.Down;
+                        break;
+                    case "Left":
+                        keyPressed = ArrowKey.Left;
+                        break;
+                    case "Right":
+                        keyPressed = ArrowKey.Right;
+                        break;
+                }
                 break;
-            } else if (Input.GetKeyUp(kcode)) ChangeOpacity(_keyUpAlpha);
+            }
+            else if (GameManager.instance.pInput.actions[action.name].WasReleasedThisFrame()) ChangeOpacity(_keyUpAlpha);
         }
     }
 

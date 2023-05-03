@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: MenuTable Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: MenuTable
+  m_TableCollectionNameGuidString: 4278ace9b1c21f64ba8ff05fc2cf2fb6
+  m_Entries:
+  - m_Id: 28609810432
+    m_Key: Menu_StartButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1975354068992
+    m_Key: Menu_Ranking
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2184230408192
+    m_Key: Menu_Quit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 918506901504
+    m_Key: Menu_HowToPlayButton
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1663218159616
+    m_Key: Menu_Credits
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966028230594560
+    m_Key: Menu_About
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979990070366208
+    m_Key: Menu_Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980049067446272
+    m_Key: Menu_HowToPlay_Tutorial
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980834249543680
+    m_Key: Menu_Credits_ProgrammedTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981043264294912
+    m_Key: Menu_Credits_ProgrammedNames
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981260185309184
+    m_Key: Menu_Credits_ArtTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981457992880128
+    m_Key: Menu_Credits_Third-PartyTitle
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981752701456384
+    m_Key: Menu_Credits_Third-PartyNames
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items: []
+  m_KeyGenerator:
+    rid: 8439077900550144004
+  references:
+    version: 2
+    RefIds:
+    - rid: 8439077900550144004
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1682909417011

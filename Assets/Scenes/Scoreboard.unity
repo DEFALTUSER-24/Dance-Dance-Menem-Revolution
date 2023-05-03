@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -886,6 +886,7 @@ GameObject:
   - component: {fileID: 448297307}
   - component: {fileID: 448297309}
   - component: {fileID: 448297308}
+  - component: {fileID: 448297310}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1010,6 +1011,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 448297306}
   m_CullTransparentMesh: 1
+--- !u!114 &448297310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 448297306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:d13f97a9620f6a044b68a6d80e5be2bd
+    m_TableEntryReference:
+      m_KeyId: 105839529984
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 448297308}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &637539030
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 637539033}
   - component: {fileID: 637539032}
-  - component: {fileID: 637539031}
+  - component: {fileID: 637539034}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1028,26 +1069,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &637539031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637539030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &637539032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1078,6 +1099,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &637539034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637539030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_MoveAction: {fileID: -6907374421117153530, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_SubmitAction: {fileID: 3149730002291214882, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 0}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &642797023
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1141,7 @@ GameObject:
   - component: {fileID: 642797026}
   - component: {fileID: 642797024}
   - component: {fileID: 642797025}
+  - component: {fileID: 642797028}
   m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
@@ -1234,6 +1286,46 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &642797028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 642797023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:d13f97a9620f6a044b68a6d80e5be2bd
+    m_TableEntryReference:
+      m_KeyId: 135409373184
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 642797024}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &696335594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,6 +1337,7 @@ GameObject:
   - component: {fileID: 696335595}
   - component: {fileID: 696335597}
   - component: {fileID: 696335596}
+  - component: {fileID: 696335598}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1369,6 +1462,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696335594}
   m_CullTransparentMesh: 1
+--- !u!114 &696335598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696335594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56eb0353ae6e5124bb35b17aff880f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_StringReference:
+    m_TableReference:
+      m_TableCollectionName: GUID:d13f97a9620f6a044b68a6d80e5be2bd
+    m_TableEntryReference:
+      m_KeyId: 140274765824
+      m_Key: 
+    m_FallbackState: 0
+    m_WaitForCompletion: 0
+    m_LocalVariables: []
+  m_FormatArguments: []
+  m_UpdateString:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 696335596}
+        m_TargetAssemblyTypeName: TMPro.TMP_Text, Unity.TextMeshPro
+        m_MethodName: set_text
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
+  references:
+    version: 2
+    RefIds: []
 --- !u!1 &784004627
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,13 +1773,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d5520c863af2f4fa9c03f52861aba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuScene: 0
+  _gameOverButton: {fileID: 0}
+  _pauseButton: {fileID: 0}
+  mainMenuScene: 1
   initialPanel: 2
   startPanel: {fileID: 0}
   inGamePanel: {fileID: 0}
   gameScore: {fileID: 0}
+  backgroundCanvas: {fileID: 0}
+  arrowsCanvas: {fileID: 0}
+  keypressResult: {fileID: 0}
+  pauseMenuPanel: {fileID: 0}
   scoreboard: {fileID: 118836901}
   gameOverPanel: {fileID: 0}
+  finalScore: {fileID: 0}
   scoreUploadInput: {fileID: 0}
   serverErrorText: {fileID: 0}
   uploadScoreButton: {fileID: 0}

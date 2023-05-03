@@ -3,15 +3,17 @@ public enum ArrowKey
     Up, 
     Down, 
     Left, 
-    Right 
+    Right,
+    None
 }
 
 public enum KeypressPrecision
 {
-    Excellent,
-    VeryGood,
+    None,
+    Bad,
     Good,
-    Bad
+    VeryGood,
+    Excellent,
 }
 
 public enum UIInitialPanel

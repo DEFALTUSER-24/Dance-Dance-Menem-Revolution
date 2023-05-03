@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
     [Header("Objects")]
-    [SerializeField] private GameObject         _arrow;
-    [SerializeField] private Canvas             _canvas;
-    [SerializeField] private GameObject         _arrowCanvas;
-    [SerializeField] private RectTransform      _field;
+    [SerializeField]    private GameObject          _arrow;
+    [SerializeField]    private Canvas              _canvas;
+    [SerializeField]    private GameObject          _arrowCanvas;
+    [SerializeField]    private RectTransform       _field;
+                        public  PlayerInput         pInput;
 
     [Header("Music")]
     public Music musicManager;
@@ -59,13 +61,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        pInput.SwitchCurrentActionMap("GamePlay");
         _startTimer = Time.deltaTime;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !_gameFinished)
+        if (pInput.actions["Pause"].WasPressedThisFrame() && !_gameFinished)
         {
+            SwitchActionsMaps();
             UI.instance.TogglePauseMenu();
             ToggleGamePause();
         }
@@ -152,5 +156,11 @@ public class GameManager : MonoBehaviour
         musicManager.ToggleMusic();
         Time.timeScale = gamePaused ? 1 : 0;
         gamePaused = !gamePaused;
+    }
+
+    public void SwitchActionsMaps()
+    {
+        if (pInput.currentActionMap.name == "GamePlay") pInput.SwitchCurrentActionMap("UI");
+        else if (pInput.currentActionMap.name == "UI") pInput.SwitchCurrentActionMap("GamePlay");
     }
 }

@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: MenuTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 4278ace9b1c21f64ba8ff05fc2cf2fb6, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 28609810432
+    m_Localized: Start saving the nation
+    m_Metadata:
+      m_Items: []
+  - m_Id: 918506901504
+    m_Localized: But how do you play the game, partner?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1663218159616
+    m_Localized: Those responsible for this atrocity
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1975354068992
+    m_Localized: People in the stratosphere
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2184230408192
+    m_Localized: Run away
+    m_Metadata:
+      m_Items: []
+  - m_Id: 966028230594560
+    m_Localized: About Menem
+    m_Metadata:
+      m_Items: []
+  - m_Id: 979990070366208
+    m_Localized: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980049067446272
+    m_Localized: 'Use the arrow keys on the keyboard or the GamePad buttons to follow
+      the rhythm of the song.
+
+
+      You can pause at any time with the ESC key
+      on the keyboard or the Start button on the GamePad.'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 980834249543680
+    m_Localized: Programmed by
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981043264294912
+    m_Localized: Ezequiel Castro and Ignacio X. Settembrini
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981260185309184
+    m_Localized: 3D Art, Shader, UI and Cover design
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981457992880128
+    m_Localized: Third-party assets
+    m_Metadata:
+      m_Items: []
+  - m_Id: 981752701456384
+    m_Localized: 'Pixellari font by Zacchary Dempsey-Plante.
+
+      Discovery font
+      by weknow.
+
+      Images form Google Images.'
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []

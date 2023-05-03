@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: LevelTable_en
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: en
+  m_SharedData: {fileID: 11400000, guid: 687bb4b9cf570c344888e643ea49d754, type: 2}
+  m_Metadata:
+    m_Items:
+    - rid: 1037668568230527014
+  m_TableData:
+  - m_Id: 726949291298816
+    m_Localized: Get Ready Partner
+    m_Metadata:
+      m_Items: []
+  - m_Id: 730427321421824
+    m_Localized: 'Score: {score-component.actualScore:}'
+    m_Metadata:
+      m_Items:
+      - rid: 1037668568230527014
+  - m_Id: 745799240060928
+    m_Localized: '{result-component.key:choose( 1 | 2 | 3 | 4): Excellent | Very
+      Good | Nice | You Suck | }'
+    m_Metadata:
+      m_Items:
+      - rid: 1037668568230527014
+  - m_Id: 944730544738304
+    m_Localized: Pause
+    m_Metadata:
+      m_Items: []
+  - m_Id: 944816389558272
+    m_Localized: Continuing the dance
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945095247859712
+    m_Localized: Reset
+    m_Metadata:
+      m_Items: []
+  - m_Id: 945298528997376
+    m_Localized: Main Menu
+    m_Metadata:
+      m_Items: []
+  - m_Id: 947302999461888
+    m_Localized: Go Menem!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 947642784223232
+    m_Localized: Write your name
+    m_Metadata:
+      m_Items: []
+  - m_Id: 948216804085760
+    m_Localized: Name...
+    m_Metadata:
+      m_Items: []
+  - m_Id: 948373708804096
+    m_Localized: Send score
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds:
+    - rid: 1037668568230527014
+      type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries: 001007dd519802000010477e10af02000010c7ea4ca60200

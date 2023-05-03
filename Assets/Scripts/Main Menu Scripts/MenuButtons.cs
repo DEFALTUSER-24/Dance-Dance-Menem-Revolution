@@ -47,6 +47,11 @@ public class MenuButtons : MonoBehaviour
         SceneManager.LoadScene(_scoreScene);
     }
 
+    public void About()
+    {
+        Application.OpenURL("https://es.wikipedia.org/wiki/Carlos_Menem");
+    }
+
     public void Exit()
     {
         Application.Quit();

@@ -113,7 +113,7 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_TERRAIN
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
---compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
+--compilation-defines=ENABLE_INPUT_SYSTEM
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP
@@ -121,54 +121,69 @@ Library: lib_burst_generated
 --compilation-defines=PACKAGE_UITOOLKIT
 --compilation-defines=CSHARP_7_OR_LATER
 --compilation-defines=CSHARP_7_3_OR_NEWER
---compilation-defines=VISUAL_SCRIPTING_ENABLED
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_VR
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_XR
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_PHYSICS
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_PHYSICS2D
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_UI
+--compilation-defines=PACKAGE_UGUI
+--compilation-defines=MODULE_AUDIO
+--compilation-defines=PACKAGE_TMP
+--compilation-defines=ENABLE_PROPERTY_VARIANTS
+--compilation-defines=PACKAGE_INPUT_SYSTEM_EXISTS
+--compilation-defines=PACKAGE_INPUT_SYSTEM_1_2_0_OR_NEWER_EXISTS
 --compilation-defines=MODULE_AI_EXISTS
 --compilation-defines=MODULE_ANIMATION_EXISTS
 --compilation-defines=MODULE_PHYSICS_EXISTS
 --compilation-defines=MODULE_PHYSICS_2D_EXISTS
 --compilation-defines=MODULE_PARTICLE_SYSTEM_EXISTS
 --compilation-defines=ENABLE_ANIMATION_BURST
---compilation-defines=TIMELINE_FRAMEACCURATE
+--compilation-defines=ENABLE_ASYNC_ASSETBUNDLE_UWR
 --compilation-defines=ENABLE_SPRITESHAPE_BURST
+--compilation-defines=TIMELINE_FRAMEACCURATE
 --linker-options=PdbAltPath="Dance Dance Menem Revolution_Data/Plugins/x86_64"
 --generate-link-xml=Temp\burst.link.xml
 --output=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.AdaptivePerformance.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InputSystem.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Localization.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Core.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.Internal.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Animation.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Burst.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.ResourceManager.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Internal.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.SpriteShape.Runtime.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Internal.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Scheduler.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Registration.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.PixelPerfect.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Device.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Threading.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Addressables.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Tilemap.Extras.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Networking.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Profiling.Core.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Threading.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Configuration.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Networking.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.013.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Registration.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.ScriptableBuildPipeline.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
 --assembly-folder=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
+--method=UnityEngine.U2D.Animation.BurstedSpriteSkinUtilities, Unity.2D.Animation.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ValidateBoneWeights(Unity.Collections.NativeSlice`1[[UnityEngine.BoneWeight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--5bf0a813706ef9287fcaa55dd0ccb876
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
 --method=Unity.Burst.Intrinsics.X86, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::DoSetCSRTrampoline(System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--da352d92cabf024fc9986011d52a4537
 --method=Unity.Burst.Intrinsics.X86, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::DoGetCSRTrampoline()--89425a97f3f500fa810ad03f0c382542
---method=UnityEngine.U2D.Animation.BurstedSpriteSkinUtilities, Unity.2D.Animation.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ValidateBoneWeights(Unity.Collections.NativeSlice`1[[UnityEngine.BoneWeight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--5bf0a813706ef9287fcaa55dd0ccb876
 --method=Unity.Jobs.IJobExtensions+JobStruct`1[[UnityEngine.U2D.SpriteShapeGenerator, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.U2D.SpriteShapeGenerator&, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--a185c62eba2497c95197140e5282b27a
 --platform=Windows
 --backend=burst-llvm-11
@@ -284,7 +299,7 @@ Library: lib_burst_generated
 --compilation-defines=ENABLE_TERRAIN
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
---compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
+--compilation-defines=ENABLE_INPUT_SYSTEM
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP
@@ -292,53 +307,68 @@ Library: lib_burst_generated
 --compilation-defines=PACKAGE_UITOOLKIT
 --compilation-defines=CSHARP_7_OR_LATER
 --compilation-defines=CSHARP_7_3_OR_NEWER
---compilation-defines=VISUAL_SCRIPTING_ENABLED
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_VR
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_XR
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_PHYSICS
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_PHYSICS2D
+--compilation-defines=UNITY_INPUT_SYSTEM_ENABLE_UI
+--compilation-defines=PACKAGE_UGUI
+--compilation-defines=MODULE_AUDIO
+--compilation-defines=PACKAGE_TMP
+--compilation-defines=ENABLE_PROPERTY_VARIANTS
+--compilation-defines=PACKAGE_INPUT_SYSTEM_EXISTS
+--compilation-defines=PACKAGE_INPUT_SYSTEM_1_2_0_OR_NEWER_EXISTS
 --compilation-defines=MODULE_AI_EXISTS
 --compilation-defines=MODULE_ANIMATION_EXISTS
 --compilation-defines=MODULE_PHYSICS_EXISTS
 --compilation-defines=MODULE_PHYSICS_2D_EXISTS
 --compilation-defines=MODULE_PARTICLE_SYSTEM_EXISTS
 --compilation-defines=ENABLE_ANIMATION_BURST
---compilation-defines=TIMELINE_FRAMEACCURATE
+--compilation-defines=ENABLE_ASYNC_ASSETBUNDLE_UWR
 --compilation-defines=ENABLE_SPRITESHAPE_BURST
+--compilation-defines=TIMELINE_FRAMEACCURATE
 --linker-options=PdbAltPath="Dance Dance Menem Revolution_Data/Plugins/x86_64"
 --generate-link-xml=Temp\burst.link.xml
 --output=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Plugins\x86_64\lib_burst_generated
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\UnityEngine.UI.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.AdaptivePerformance.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Telemetry.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InputSystem.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.State.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Localization.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Flow.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.VisualScripting.Core.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.Internal.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Burst.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Animation.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.TextMeshPro.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Burst.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.ResourceManager.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Environments.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Internal.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.SpriteShape.Runtime.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Internal.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Timeline.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Mathematics.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Assembly-CSharp.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Scheduler.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Registration.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.PixelPerfect.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Device.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Threading.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Addressables.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Analytics.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.IK.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Tilemap.Extras.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Networking.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Profiling.Core.dll
---root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Threading.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.2D.Common.Runtime.dll
 --root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Configuration.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Networking.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.013.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.Services.Core.Registration.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.ScriptableBuildPipeline.dll
+--root-assembly=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\Unity.InternalAPIEngineBridge.001.dll
 --assembly-folder=C:\Users\Usuario\Documents\JAM-2023\Temp\StagingArea\Data\Managed\
 --pdb-search-paths=Temp/ManagedSymbols/
+--method=UnityEngine.U2D.Animation.BurstedSpriteSkinUtilities, Unity.2D.Animation.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ValidateBoneWeights(Unity.Collections.NativeSlice`1[[UnityEngine.BoneWeight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--5bf0a813706ef9287fcaa55dd0ccb876
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10
 --method=Unity.Burst.Intrinsics.X86, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::DoSetCSRTrampoline(System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--da352d92cabf024fc9986011d52a4537
 --method=Unity.Burst.Intrinsics.X86, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::DoGetCSRTrampoline()--89425a97f3f500fa810ad03f0c382542
---method=UnityEngine.U2D.Animation.BurstedSpriteSkinUtilities, Unity.2D.Animation.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::ValidateBoneWeights(Unity.Collections.NativeSlice`1[[UnityEngine.BoneWeight, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]]&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--5bf0a813706ef9287fcaa55dd0ccb876
 --method=Unity.Jobs.IJobExtensions+JobStruct`1[[UnityEngine.U2D.SpriteShapeGenerator, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]], UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::Execute(UnityEngine.U2D.SpriteShapeGenerator&, Unity.2D.SpriteShape.Runtime, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|System.IntPtr, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089|Unity.Jobs.LowLevel.Unsafe.JobRanges&, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null|System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089)--a185c62eba2497c95197140e5282b27a
 

@@ -206,6 +206,7 @@ public class UI : MonoBehaviour
         backgroundCanvas.SetActive(false);
         arrowsCanvas.SetActive(false);
         EventSystem.current.SetSelectedGameObject(_gameOverButton);
+        GameManager.instance.SwitchActionsMaps();
     }
     
     public void ShowStartMenu()
@@ -238,6 +239,7 @@ public class UI : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        GameManager.instance.SwitchActionsMaps();
     }
 
     public void TogglePauseMenu()
@@ -266,6 +268,7 @@ public class UI : MonoBehaviour
     {
         TogglePauseMenu();
         GameManager.instance.ToggleGamePause();
+        GameManager.instance.SwitchActionsMaps();
     }
 
     #endregion

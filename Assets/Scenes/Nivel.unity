@@ -925,6 +925,7 @@ GameObject:
   - component: {fileID: 406736751}
   - component: {fileID: 406736750}
   - component: {fileID: 406736754}
+  - component: {fileID: 406736755}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -948,6 +949,7 @@ MonoBehaviour:
   _canvas: {fileID: 1287924261}
   _arrowCanvas: {fileID: 846018811}
   _field: {fileID: 1990310133}
+  pInput: {fileID: 406736755}
   musicManager: {fileID: 1088076692}
   currentArrow: {fileID: 0}
   currentTimeEvent: 0
@@ -1024,6 +1026,36 @@ MonoBehaviour:
   - {fileID: 979816070}
   - {fileID: 1990029631}
   _changeTimer: 5
+--- !u!114 &406736755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406736749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: GamePlay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!4 &410589008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 12871dec988433c45b0ff0f5be3eb502, type: 3}
@@ -4197,8 +4229,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1789674041}
   - component: {fileID: 1789674040}
-  - component: {fileID: 1789674039}
   - component: {fileID: 1789674042}
+  - component: {fileID: 1789674043}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4206,26 +4238,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1789674039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789674038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1789674040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4269,6 +4281,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _framesPerSecond: 24
+--- !u!114 &1789674043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789674038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_PointAction: {fileID: 1054132383583890850, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_MoveAction: {fileID: -6907374421117153530, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_SubmitAction: {fileID: 3149730002291214882, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_CancelAction: {fileID: 0}
+  m_LeftClickAction: {fileID: 3149730002291214882, guid: 29095b8244431034a8cd70c0dec7f4a4, type: 3}
+  m_MiddleClickAction: {fileID: 0}
+  m_RightClickAction: {fileID: 0}
+  m_ScrollWheelAction: {fileID: 0}
+  m_TrackedDevicePositionAction: {fileID: 0}
+  m_TrackedDeviceOrientationAction: {fileID: 0}
+  m_DeselectOnBackgroundClick: 1
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!4 &1801502526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dccac756e37365a49b8a3b1f1e5a8f9f, type: 3}

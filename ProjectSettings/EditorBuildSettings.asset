@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Language.unity
+    guid: 93447a81c7672144fa6aca2858c6555b
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
@@ -17,3 +20,6 @@ EditorBuildSettings:
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: a28e17e05d6864442af93f0e6b962a1a, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: c9548d6862d036b4c92d01ba6c528316, type: 2}
+    com.unity.addressableassets: {fileID: 11400000, guid: bb65856ba30cd6348b76353d7e63d217, type: 2}
+    com.unity.input.settings: {fileID: 11400000, guid: 4d8de8f0037a5324489fe19d7bc06168, type: 2}
+    com.unity.localization.settings: {fileID: 11400000, guid: ffda0d2419b4f114fb04f2b9ea1c9b99, type: 2}
