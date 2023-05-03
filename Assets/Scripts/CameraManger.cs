@@ -21,8 +21,8 @@ public class CameraManger : MonoBehaviour
     {
         for (int i = 0; i < _cameras.Length; i++)
         {
-            yield return new WaitForSeconds(GameManager.instance.beginLevelTime/_cameras.Length);
             ChangeMainCamera(i);
+            yield return new WaitForSeconds(GameManager.instance.beginLevelTime/_cameras.Length);
         }
 
         ChangeMainCamera(0);
@@ -31,8 +31,8 @@ public class CameraManger : MonoBehaviour
         {
             for (int i = 0; i < _cameras.Length; i++)
             {
-                yield return new WaitForSeconds(_changeTimer);
                 ChangeMainCamera(i);
+                yield return new WaitForSeconds(_changeTimer);
             }
         }
     }
