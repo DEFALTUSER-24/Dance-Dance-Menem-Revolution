@@ -23,10 +23,6 @@ MonoBehaviour:
     m_Key: Level_Score
     m_Metadata:
       m_Items: []
-  - m_Id: 745799240060928
-    m_Key: Level_Result
-    m_Metadata:
-      m_Items: []
   - m_Id: 944730544738304
     m_Key: Level_Pause_Title
     m_Metadata:
@@ -61,6 +57,22 @@ MonoBehaviour:
       m_Items: []
   - m_Id: 948373708804096
     m_Key: Level_GameOver_SendScore
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1823042469040128
+    m_Key: Level_Result_Excellent
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1824919432663040
+    m_Key: Level_Result_VeryGood
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1824995844493312
+    m_Key: Level_Result_Nice
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1825034687942656
+    m_Key: Level_Result_Bad
     m_Metadata:
       m_Items: []
   m_Metadata:

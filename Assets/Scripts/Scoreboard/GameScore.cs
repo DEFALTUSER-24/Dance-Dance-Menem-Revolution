@@ -24,13 +24,6 @@ public class GameScore
         UI.instance.UpdateKeypressResult(result);
 
         Mathf.Clamp(_currentScore, 0, Mathf.Infinity);
-
-        OnUpdate();
-    }
-
-    private void OnUpdate()
-    {
-        UI.instance.UpdateGameScore();
     }
 
     //public void Save(string playerName, int gameLevel)

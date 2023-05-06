@@ -26,7 +26,7 @@ public class UI : MonoBehaviour
     [SerializeField] private TMP_Text       gameScore;
     [SerializeField] private GameObject     backgroundCanvas;
     [SerializeField] private GameObject     arrowsCanvas;
-    [SerializeField] private TMP_Text       keypressResult;
+    [SerializeField] private Result         _result;
 
     [Header("Pause menu")]
     [SerializeField] private GameObject     pauseMenuPanel;
@@ -64,55 +64,13 @@ public class UI : MonoBehaviour
                 ServerRequest.instance.GetScores();
                 break;
         }
-
-        if (keypressResult != null)
-            keypressResult.text = "";
     }
 
     #region Game Score
 
-    public void UpdateGameScore()
-    {
-        gameScore.text = "Puntaje: " + GameManager.instance.Score().Get();
-    }
-
-    private void UpdateFinalScore()
-    {
-        finalScore.text = "Tu deuda: " + GameManager.instance.Score().Get();
-    }
-
     public void UpdateKeypressResult(KeypressPrecision precision)
     {
-        switch (precision)
-        {
-            case KeypressPrecision.Excellent:
-                keypressResult.text = "Excelente";
-                keypressResult.color = new Color(0, 255, 0); //green
-                break;
-            case KeypressPrecision.VeryGood:
-                keypressResult.text = "Muy bien";
-                keypressResult.color = new Color(255, 0, 255); //yellow
-                break;
-            case KeypressPrecision.Good:
-                keypressResult.text = "Bien";
-                keypressResult.color = new Color(255, 255, 255); //white
-                break;
-            case KeypressPrecision.Bad:
-                keypressResult.text = "Malisimo";
-                keypressResult.color = new Color(255, 0, 0); //red
-                break;
-        }
-
-        if (keypressResultCoroutine != null)
-            StopCoroutine(keypressResultCoroutine);
-
-        keypressResultCoroutine = StartCoroutine(HideKeypressResultCoroutine());
-    }
-
-    IEnumerator HideKeypressResultCoroutine()
-    {
-        yield return new WaitForSeconds(1);
-        keypressResult.text = "";
+        _result.KeyResult(precision);
     }
 
     #endregion
@@ -198,8 +156,6 @@ public class UI : MonoBehaviour
 
     public void ShowGameOverMenu()
     {
-        UpdateFinalScore();
-
         startPanel.SetActive(false);
         gameOverPanel.SetActive(true);
         inGamePanel.SetActive(false);

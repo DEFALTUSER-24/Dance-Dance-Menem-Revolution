@@ -24,13 +24,7 @@ MonoBehaviour:
     m_Metadata:
       m_Items: []
   - m_Id: 730427321421824
-    m_Localized: 'Puntaje: {score-component.actualScore:}'
-    m_Metadata:
-      m_Items:
-      - rid: 1037668568230527016
-  - m_Id: 745799240060928
-    m_Localized: "{result-component.key:choose(1 | 2 | 3 | 4): Excelente | Muy Bien
-      | Bien | Mal\xEDsimo |  }"
+    m_Localized: 'Puntaje: {score-component.actualScore}'
     m_Metadata:
       m_Items:
       - rid: 1037668568230527016
@@ -66,10 +60,31 @@ MonoBehaviour:
     m_Localized: Subir Puntaje
     m_Metadata:
       m_Items: []
+  - m_Id: 1823042469040128
+    m_Localized: Excelente
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1824919432663040
+    m_Localized: Muy Bien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1824995844493312
+    m_Localized: Bien
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1825034687942656
+    m_Localized: "Mal\xEDsimo"
+    m_Metadata:
+      m_Items: []
+  - m_Id: 947465079951360
+    m_Localized: 'Tu deuda: {score-component.actualScore}'
+    m_Metadata:
+      m_Items:
+      - rid: 1037668568230527016
   references:
     version: 2
     RefIds:
     - rid: 1037668568230527016
       type: {class: SmartFormatTag, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
       data:
-        m_Entries: 001007dd519802000010c7ea4ca602000010477e10af0200
+        m_Entries: 001007dd519802000010477e10af0200001087e7b65d0300
