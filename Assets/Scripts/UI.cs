@@ -35,12 +35,11 @@ public class UI : MonoBehaviour
     [SerializeField] private TMP_InputField scoreboard;
 
     [Header("Game Over")]
-    [SerializeField] private GameObject     gameOverPanel;
-    [SerializeField] private TMP_Text       finalScore;
-    [SerializeField] private TMP_InputField scoreUploadInput;
-    [SerializeField] private TMP_Text       serverErrorText;
-    [SerializeField] private GameObject     uploadScoreButton;
-    [SerializeField] private GameObject     writeYourNameText;
+    [SerializeField] private GameObject         gameOverPanel;
+    [SerializeField] private TMP_Text           finalScore;
+    [SerializeField] private ScoreDescription   scoreDescription;
+    [SerializeField] private GameObject         uploadScoreButton;
+    [SerializeField] private GameObject         writeYourNameText;
 
     private Coroutine keypressResultCoroutine;
 
@@ -118,36 +117,15 @@ public class UI : MonoBehaviour
     #endregion
 
     #region Game Over panel actions
-    public void ShowScoreUploadError(string errorDescription = "")
-    {
-        serverErrorText.text = errorDescription != "" ? errorDescription : "Error al subir el puntaje al servidor";
-    }
-
     public void SaveScore()
     {
-        if (scoreUploadInput.text == "")
-        {
-            ShowScoreUploadError("Tenés que escribir un nombre, máximo 15 letras.");
-            return;
-        }
-
-        if (scoreUploadInput.text.Trim() == "")
-        {
-            ShowScoreUploadError("No trates de subir el dolar... poné una letra al menos.");
-            return;
-        }
-
-        GameManager.instance.Score().Save(scoreUploadInput.text);
+        if(scoreDescription.ShowScoreUploadError()) GameManager.instance.Score().Save(scoreDescription.GetPlayerName());
     }
 
     public void OnScoreSaved()
     {
-        ShowScoreUploadError("Puntaje guardado correctamente.");
-        scoreUploadInput.gameObject.SetActive(false);
         uploadScoreButton.SetActive(false);
         writeYourNameText.SetActive(false);
-
-        scoreUploadInput.text = "";
     }
 
     #endregion

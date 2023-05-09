@@ -81,6 +81,22 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 1037668568230527014
+  - m_Id: 2851798369374208
+    m_Localized: Score saved correctly.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852070768447488
+    m_Localized: '"You have to write a name, maximum 15 letters".'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852213441892352
+    m_Localized: Don't be a smart-ass and put at least one letter.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852766737698816
+    m_Localized: Error uploading the score to the server.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

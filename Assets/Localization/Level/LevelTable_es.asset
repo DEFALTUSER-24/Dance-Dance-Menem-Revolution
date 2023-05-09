@@ -81,6 +81,22 @@ MonoBehaviour:
     m_Metadata:
       m_Items:
       - rid: 1037668568230527016
+  - m_Id: 2851798369374208
+    m_Localized: Puntaje guardado correctamente.
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852070768447488
+    m_Localized: "Ten\xE9s que escribir un nombre, m\xE1ximo 15 letras."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852213441892352
+    m_Localized: "No te hagas el capo y pon\xE9 una letra al menos."
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852766737698816
+    m_Localized: Error al subir el puntaje al servidor.
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds:

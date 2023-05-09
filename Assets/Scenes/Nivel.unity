@@ -926,6 +926,7 @@ GameObject:
   - component: {fileID: 406736750}
   - component: {fileID: 406736754}
   - component: {fileID: 406736755}
+  - component: {fileID: 406736756}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -967,7 +968,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406736749}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7462f9f39ed34f94e8e67553bc2b29f4, type: 3}
   m_Name: 
@@ -990,7 +991,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f888ec63d1c702a438522c31f4d03a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fileName: test
+  fileName: test1
 --- !u!4 &406736753
 Transform:
   m_ObjectHideFlags: 0
@@ -1056,6 +1057,20 @@ MonoBehaviour:
   m_DefaultActionMap: GamePlay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &406736756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406736749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7462f9f39ed34f94e8e67553bc2b29f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileNames:
+  - test1
 --- !u!4 &410589008 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 12871dec988433c45b0ff0f5be3eb502, type: 3}

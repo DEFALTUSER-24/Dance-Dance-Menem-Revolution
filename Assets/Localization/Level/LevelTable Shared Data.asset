@@ -75,6 +75,22 @@ MonoBehaviour:
     m_Key: Level_Result_Bad
     m_Metadata:
       m_Items: []
+  - m_Id: 2851798369374208
+    m_Key: GameOver_SaveScore_Successful
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852070768447488
+    m_Key: GameOver_SaveScore_NameIsNull
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852213441892352
+    m_Key: GameOver_SaveScore_NameHaveMuchBlankSpace
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2852766737698816
+    m_Key: GameOver_SaveScore_Error
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:

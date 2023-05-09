@@ -66,10 +66,6 @@ public class ServerRequest : MonoBehaviour
             {
                 UI.instance.OnScoreSaved();
             }
-            else
-            {
-                UI.instance.ShowScoreUploadError();
-            }
         }
     }
 
