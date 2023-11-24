@@ -18,9 +18,10 @@ El juego cuenta con Ranking Online!
 
 Podés clonar el repositorio y abrirlo desde Unity 2021.3.12f1, jugarlo en [itch.io](https://ignaxavier.itch.io/dance-dance-menem-revolution) o descargar la última Release de este repositorio.
 
-## Assets
+## Assets de terceros
 
-
+Fuentes: Pixellari por Zacchary Dempsey - Plante | Discovery por weknow.
+Imágenes de Google Images.
 
 ## Creadores
 
