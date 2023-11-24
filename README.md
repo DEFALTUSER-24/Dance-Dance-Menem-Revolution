@@ -21,6 +21,7 @@ Podés clonar el repositorio y abrirlo desde Unity 2021.3.12f1, jugarlo en [itch
 ## Assets de terceros
 
 Fuentes: Pixellari por Zacchary Dempsey - Plante | Discovery por weknow.
+
 Imágenes de Google Images.
 
 ## Creadores
