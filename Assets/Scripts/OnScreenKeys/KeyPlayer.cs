@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Globalization;
 using System.IO;
 
 public class KeyPlayer : MonoBehaviour
@@ -22,8 +23,11 @@ public class KeyPlayer : MonoBehaviour
         {
             string[] fields = lines[i].Split(';');
 
+            string time = fields[1].Trim();
+            time = time.Replace(",", ".");
+
             GameManager.instance.AddKeyEvent(
-                float.Parse(fields[1]), //Time
+                float.Parse(time, CultureInfo.InvariantCulture), //Time
                 (ArrowKey)System.Enum.Parse(typeof(ArrowKey), fields[0]) //Key
             );
         }
