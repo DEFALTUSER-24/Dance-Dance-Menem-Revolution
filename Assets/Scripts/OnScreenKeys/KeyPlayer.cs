@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Globalization;
 using System.IO;
 
@@ -10,28 +11,58 @@ public class KeyPlayer : MonoBehaviour
     {
         Debug.Log("KEY PLAYER STARTED");
 
-        string filePath = Path.Combine(Application.streamingAssetsPath, fileNames[Random.Range(0, fileNames.Length)] + ".csv");
-        if (!File.Exists(filePath))
+
+        string fileName = fileNames[Random.Range(0, fileNames.Length)] + ".txt";
+        string filePath = Path.Combine(Application.streamingAssetsPath, fileName);
+
+        StartCoroutine(LoadKeysFile(filePath));
+    }
+
+    IEnumerator LoadKeysFile(string filePath)
+    {
+        string result;
+
+        if (filePath.Contains("://") || filePath.Contains(":///"))
         {
-            Debug.LogError("File does not exist.");
-            return;
+            WWW www = new WWW(filePath);
+            yield return www;
+            result = www.text;
+        }
+        else
+        {
+            result = System.IO.File.ReadAllText(filePath);
         }
 
-        // Read the CSV file and skip the first row
-        string[] lines = File.ReadAllLines(filePath);
-        for (int i = 1; i < lines.Length; i++)
-        {
-            string[] fields = lines[i].Split(';');
+        JsonWrapper jsonWrapper = JsonUtility.FromJson<JsonWrapper>(result);
 
-            string time = fields[1].Trim();
+        string time = "";
+
+        foreach (var keyTime in jsonWrapper.keyTimes)
+        {
+            Debug.Log("Key: " + keyTime.Key + ", Time: " + keyTime.Time);
+
+            time = keyTime.Time.ToString().Trim();
             time = time.Replace(",", ".");
 
             GameManager.instance.AddKeyEvent(
                 float.Parse(time, CultureInfo.InvariantCulture), //Time
-                (ArrowKey)System.Enum.Parse(typeof(ArrowKey), fields[0]) //Key
+                (ArrowKey)System.Enum.Parse(typeof(ArrowKey), keyTime.Key) //Key
             );
         }
 
         GameManager.instance.CreateKeys();
     }
+}
+
+[System.Serializable]
+public class JsonWrapper
+{
+    public KeyTime[] keyTimes;
+}
+
+[System.Serializable]
+public class KeyTime
+{
+    public string Key;
+    public string Time;
 }
